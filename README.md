@@ -50,8 +50,8 @@ season's file.
 ## Build log / phases
 
 - [x] Phase 0 — project setup, venv, historical data pulled (2022/23 – 2026/27 so far)
-- [ ] Phase 1 — data loading & cleaning (`src/data_load.py`)
-- [ ] Phase 2 — Elo rating engine (`src/elo.py`)
+- [x] Phase 1 — data loading & cleaning (`src/data_load.py`)
+- [x] Phase 2 — Elo rating engine (`src/elo.py`), backtested at 68.1% accuracy on decisive matches vs 58.6% home-favorite baseline (`src/backtest.py`)
 - [ ] Phase 3 — Poisson goal model (`src/poisson_model.py`)
 - [ ] Phase 4 — season Monte Carlo simulator (`src/simulate.py`)
 - [ ] Phase 5 — weekly update script (`src/update_weekly.py`)
