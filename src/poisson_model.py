@@ -37,6 +37,28 @@ def poisson_pmf(k, lam):
     return (lam ** k) * math.exp(-lam) / math.factorial(k)
 
 
+SHRINKAGE_PRIOR_MATCHES = 6  # treat every team as if it had this many "average" matches to start
+
+
+def _shrink(raw_value, n_matches, prior=SHRINKAGE_PRIOR_MATCHES):
+    """
+    Blend a raw estimate toward 1.0 (perfectly average), weighted by how
+    much real data backs it up.
+
+        shrunk = (n_matches * raw_value + prior * 1.0) / (n_matches + prior)
+
+    A team with 0 matches gets pure 1.0 (average). A team with `prior`
+    matches gets weighted 50/50 between its own data and average. A team
+    with 40 matches (a full season) is barely pulled at all.
+
+    Without this, a promoted team that's conceded 0 goals in 3 games gets
+    a defense strength of exactly 0.0 -- meaning the model predicts every
+    future opponent will score 0 goals against them, forever. That's
+    overfitting to a tiny, lucky sample, not a real signal.
+    """
+    return (n_matches * raw_value + prior * 1.0) / (n_matches + prior)
+
+
 def compute_team_strengths(matches):
     """
     Attack strength: how many goals a team scores relative to the league
@@ -45,6 +67,8 @@ def compute_team_strengths(matches):
     Defense strength: how many goals a team CONCEDES relative to league
     average. Note a GOOD defense has a strength BELOW 1.0 -- they concede
     less than an average team.
+
+    Both are shrunk toward 1.0 based on sample size -- see _shrink().
     """
     league_avg_home_goals = matches["FTHG"].mean()
     league_avg_away_goals = matches["FTAG"].mean()
@@ -55,15 +79,18 @@ def compute_team_strengths(matches):
     for team in teams:
         home = matches[matches["HomeTeam"] == team]
         away = matches[matches["AwayTeam"] == team]
+        n_matches = len(home) + len(away)
 
         home_attack = home["FTHG"].mean() / league_avg_home_goals if len(home) else 1.0
         away_attack = away["FTAG"].mean() / league_avg_away_goals if len(away) else 1.0
-        attack[team] = (home_attack + away_attack) / 2
+        raw_attack = (home_attack + away_attack) / 2
+        attack[team] = _shrink(raw_attack, n_matches)
 
         # "goals conceded at home" = the AWAY team's goals in home matches
         home_defense = home["FTAG"].mean() / league_avg_away_goals if len(home) else 1.0
         away_defense = away["FTHG"].mean() / league_avg_home_goals if len(away) else 1.0
-        defense[team] = (home_defense + away_defense) / 2
+        raw_defense = (home_defense + away_defense) / 2
+        defense[team] = _shrink(raw_defense, n_matches)
 
     return attack, defense, league_avg_home_goals, league_avg_away_goals
 
