@@ -28,7 +28,7 @@ HOME_ADVANTAGE = 100.0   # Elo points added to home team's rating, for the expec
 K_FACTOR = 20.0          # how much a single match can move a rating
 
 
-def expected_score(rating_a: float, rating_b: float) -> float:
+def expected_score(rating_a, rating_b):
     """
     Return team A's expected score against team B: a value between 0 and 1.
     1500 vs 1500 -> 0.5. Higher rating_a relative to rating_b -> higher.
@@ -39,7 +39,7 @@ def expected_score(rating_a: float, rating_b: float) -> float:
     return 1 / (1 + 10 ** ((rating_b - rating_a) / 400))
 
 
-def actual_score(result: str, perspective: str) -> float:
+def actual_score(result, perspective):
     """
     Convert a match result into a 0-1 score from one team's perspective.
 
