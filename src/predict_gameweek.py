@@ -19,11 +19,11 @@ from data_load import load_all_seasons, RAW_DIR
 from poisson_model import (
     RECENT_SEASONS,
     compute_team_strengths,
-    expected_goals,
     match_outcome_probabilities,
     most_likely_scoreline,
     probability_over_line,
 )
+from team_news import expected_goals_for_fixture, load_team_news
 
 
 def load_upcoming_fixtures():
@@ -39,10 +39,17 @@ if __name__ == "__main__":
     attack, defense, avg_home, avg_away = compute_team_strengths(recent)
 
     fixtures = load_upcoming_fixtures()
+    team_news = load_team_news()
+    if len(team_news):
+        print(f"Applying {len(team_news)} active team-news adjustment(s):")
+        print(team_news.to_string(index=False))
+        print()
 
     print(f"Predictions for the next {len(fixtures)} fixtures:\n")
     for f in fixtures.itertuples():
-        home_xg, away_xg = expected_goals(f.HomeTeam, f.AwayTeam, attack, defense, avg_home, avg_away)
+        home_xg, away_xg = expected_goals_for_fixture(
+            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news
+        )
         p_home, p_draw, p_away = match_outcome_probabilities(home_xg, away_xg)
         (h, a), score_p = most_likely_scoreline(home_xg, away_xg)
         p_over = probability_over_line(home_xg, away_xg, line=2.5)

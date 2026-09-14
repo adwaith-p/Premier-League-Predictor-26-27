@@ -21,11 +21,13 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from data_load import load_all_seasons
-from poisson_model import RECENT_SEASONS, compute_team_strengths, expected_goals
+from data_load import RAW_DIR, load_all_seasons
+from poisson_model import RECENT_SEASONS, compute_team_strengths
+from team_news import expected_goals_for_fixture, load_team_news
 
 CURRENT_SEASON = "2026/27"
 N_SIMULATIONS = 10_000
+SCHEDULE_PATH = RAW_DIR / "schedule_2026_27.csv"
 
 
 def get_current_standings(season_matches):
@@ -56,18 +58,33 @@ def remaining_fixtures(teams, season_matches):
     """
     A full PL season is every team playing every other team home and away
     (20 x 19 = 380 fixtures). Subtract the ones already played to get
-    what's left.
+    what's left. Undated -- use remaining_fixtures_with_dates() when dates
+    matter (e.g. for team-news windows).
     """
     full_season = {(h, a) for h in teams for a in teams if h != a}
     played = set(zip(season_matches["HomeTeam"], season_matches["AwayTeam"]))
     return sorted(full_season - played)
 
 
-def precompute_fixture_xg(fixtures, attack, defense, avg_home, avg_away):
-    """Expected goals for each remaining fixture, computed once (fixed for every simulation)."""
+def remaining_fixtures_with_dates(schedule, season_matches):
+    """Same idea as remaining_fixtures(), but sourced from the real dated schedule."""
+    played_pairs = set(zip(season_matches["HomeTeam"], season_matches["AwayTeam"]))
+    is_unplayed = ~schedule.apply(lambda r: (r["HomeTeam"], r["AwayTeam"]) in played_pairs, axis=1)
+    return schedule[is_unplayed].sort_values("Date").reset_index(drop=True)
+
+
+def precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news=None):
+    """
+    Expected goals for each remaining fixture, computed once (fixed for
+    every simulation). Applies team_news adjustments per fixture based on
+    its real date, so a time-limited injury only affects fixtures that
+    actually fall in that window.
+    """
     home_xg, away_xg = [], []
-    for home, away in fixtures:
-        h_xg, a_xg = expected_goals(home, away, attack, defense, avg_home, avg_away)
+    for f in fixtures_df.itertuples():
+        h_xg, a_xg = expected_goals_for_fixture(
+            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news
+        )
         home_xg.append(h_xg)
         away_xg.append(a_xg)
     return np.array(home_xg), np.array(away_xg)
@@ -135,17 +152,23 @@ if __name__ == "__main__":
     season_matches = matches[matches["Season"] == CURRENT_SEASON]
     recent = matches[matches["Season"].isin(RECENT_SEASONS)]
 
-    teams = sorted(set(season_matches["HomeTeam"]) | set(season_matches["AwayTeam"]))
+    schedule = pd.read_csv(SCHEDULE_PATH, parse_dates=["Date"])
     standings = get_current_standings(season_matches)
-    fixtures = remaining_fixtures(teams, season_matches)
+    fixtures_df = remaining_fixtures_with_dates(schedule, season_matches)
+    fixture_pairs = list(zip(fixtures_df["HomeTeam"], fixtures_df["AwayTeam"]))
 
+    team_news = load_team_news()
     attack, defense, avg_home, avg_away = compute_team_strengths(recent)
-    home_xg, away_xg = precompute_fixture_xg(fixtures, attack, defense, avg_home, avg_away)
+    home_xg, away_xg = precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news)
 
-    print(f"{len(season_matches)} matches played, {len(fixtures)} remaining. "
+    print(f"{len(season_matches)} matches played, {len(fixtures_df)} remaining. "
           f"Running {N_SIMULATIONS:,} simulations...\n")
+    if len(team_news):
+        print(f"Applying {len(team_news)} active team-news adjustment(s):")
+        print(team_news.to_string(index=False))
+        print()
 
-    results = simulate_seasons(standings, fixtures, home_xg, away_xg)
+    results = simulate_seasons(standings, fixture_pairs, home_xg, away_xg)
 
     pd.set_option("display.float_format", lambda x: f"{x:.1%}" if x <= 1 else f"{x:.1f}")
     print(results.to_string())

@@ -25,16 +25,16 @@ from backtest import backtest
 from poisson_model import (
     RECENT_SEASONS,
     compute_team_strengths,
-    expected_goals,
     match_outcome_probabilities,
     most_likely_scoreline,
     probability_over_line,
 )
+from team_news import expected_goals_for_fixture, load_team_news
 from simulate import (
     CURRENT_SEASON,
     get_current_standings,
     precompute_fixture_xg,
-    remaining_fixtures,
+    remaining_fixtures_with_dates,
     simulate_seasons,
 )
 
@@ -112,11 +112,17 @@ if __name__ == "__main__":
     print("\n=== Step 4: Poisson strengths + season simulation ===")
     recent = matches[matches["Season"].isin(RECENT_SEASONS)]
     attack, defense, avg_home, avg_away = compute_team_strengths(recent)
-    teams = sorted(set(season_matches["HomeTeam"]) | set(season_matches["AwayTeam"]))
     standings = get_current_standings(season_matches)
-    fixtures = remaining_fixtures(teams, season_matches)
-    home_xg, away_xg = precompute_fixture_xg(fixtures, attack, defense, avg_home, avg_away)
-    sim_results = simulate_seasons(standings, fixtures, home_xg, away_xg)
+    fixtures_df = remaining_fixtures_with_dates(schedule, season_matches)
+    fixture_pairs = list(zip(fixtures_df["HomeTeam"], fixtures_df["AwayTeam"]))
+
+    team_news = load_team_news()
+    if len(team_news):
+        print(f"Applying {len(team_news)} active team-news adjustment(s):")
+        print(team_news.to_string(index=False))
+
+    home_xg, away_xg = precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news)
+    sim_results = simulate_seasons(standings, fixture_pairs, home_xg, away_xg)
     log_snapshot(sim_results)
 
     pd.set_option("display.max_columns", None)
@@ -127,7 +133,9 @@ if __name__ == "__main__":
     print("\n=== Step 5: next gameweek predictions ===")
     upcoming = next_gameweek_fixtures(schedule, season_matches)
     for f in upcoming.itertuples():
-        h_xg, a_xg = expected_goals(f.HomeTeam, f.AwayTeam, attack, defense, avg_home, avg_away)
+        h_xg, a_xg = expected_goals_for_fixture(
+            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news
+        )
         p_home, p_draw, p_away = match_outcome_probabilities(h_xg, a_xg)
         (h, a), score_p = most_likely_scoreline(h_xg, a_xg)
         p_over = probability_over_line(h_xg, a_xg, line=2.5)
