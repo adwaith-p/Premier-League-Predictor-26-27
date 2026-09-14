@@ -56,7 +56,7 @@ season's file.
 - [x] Phase 4 — season Monte Carlo simulator (`src/simulate.py`), 10,000-sim title/top-4/relegation odds; caught and fixed a small-sample overfitting bug via shrinkage
 - [x] Phase 5 — weekly update pipeline (`src/update_weekly.py`), backed by a validated full-season schedule (`src/parse_schedule.py` -> `data/raw/schedule_2026_27.csv`); re-downloads results, flags possible postponements, recomputes everything, logs a snapshot history, predicts the next gameweek
 - [x] Phase 6 — manual team-news adjustments (`src/team_news.py`, `data/team_news.csv`); date-limited injury/suspension multipliers that apply only to fixtures in their window and auto-expire
-- [ ] Phase 7 (new) — UI/dashboard showing current predictions + next gameweek + odds history over time
+- [x] Phase 7 — web dashboard published as an Artifact: https://claude.ai/code/artifact/9ad3c12a-43af-4c19-81fe-c091e8aad30d (`export_dashboard.py` -> `build_dashboard.py` -> republish `dashboard.html`)
 
 ## Setup
 
