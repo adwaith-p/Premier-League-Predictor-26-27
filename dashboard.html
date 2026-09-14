@@ -1,0 +1,760 @@
+<title>Title Race Tracker</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f7f6fa;
+    --surface: #ffffff;
+    --surface-2: #fbfafd;
+    --ink: #14121c;
+    --ink-secondary: #55536a;
+    --ink-muted: #8e8ba3;
+    --border: rgba(20,18,28,0.10);
+    --border-strong: rgba(20,18,28,0.18);
+    --accent: #4a3aa7;
+    --accent-ink: #ffffff;
+    --accent-soft: #eeebfa;
+    --accent-2: #eb6834;
+    --accent-2-soft: #fce8df;
+    --accent-2-ink: #6b2c14;
+    --good: #0ca30c;
+    --good-soft: #e3f6e1;
+    --warning: #b8791a;
+    --warning-soft: #fff3da;
+    --critical: #d03b3b;
+    --critical-soft: #fbe4e4;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #b8791a;
+    --font-display: 'Teko', 'Arial Narrow', sans-serif;
+    --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0f0d16; --surface: #1b1826; --surface-2: #201c2e;
+      --ink: #f3f1fa; --ink-secondary: #b3afc4; --ink-muted: #7a7690;
+      --border: rgba(255,255,255,0.10); --border-strong: rgba(255,255,255,0.20);
+      --accent: #9085e9; --accent-ink: #14121c; --accent-soft: #2a2440;
+      --accent-2: #e8874f; --accent-2-soft: #3a2418; --accent-2-ink: #ffd9bd;
+      --good: #3fc23f; --good-soft: #16301a;
+      --warning: #f0ac4c; --warning-soft: #3a2e10;
+      --critical: #ea6a6a; --critical-soft: #3a1818;
+      --series-1: #3987e5; --series-2: #e8874f; --series-3: #3ecb98; --series-4: #f0ac4c;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0f0d16; --surface: #1b1826; --surface-2: #201c2e;
+    --ink: #f3f1fa; --ink-secondary: #b3afc4; --ink-muted: #7a7690;
+    --border: rgba(255,255,255,0.10); --border-strong: rgba(255,255,255,0.20);
+    --accent: #9085e9; --accent-ink: #14121c; --accent-soft: #2a2440;
+    --accent-2: #e8874f; --accent-2-soft: #3a2418; --accent-2-ink: #ffd9bd;
+    --good: #3fc23f; --good-soft: #16301a;
+    --warning: #f0ac4c; --warning-soft: #3a2e10;
+    --critical: #ea6a6a; --critical-soft: #3a1818;
+    --series-1: #3987e5; --series-2: #e8874f; --series-3: #3ecb98; --series-4: #f0ac4c;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--font-body); padding: 0 20px; padding-block: 2rem 3rem;
+  }
+  .page { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+
+  .masthead { display: flex; flex-direction: column; gap: .5rem; border-bottom: 2px solid var(--accent); padding-bottom: 1.1rem; }
+  .masthead-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  .updated { font-size: 13px; color: var(--ink-muted); font-family: var(--font-mono); }
+  .title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1; margin: 0; text-wrap: balance; }
+
+  .hero-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.3rem; display: flex; flex-direction: column; gap: 4px; }
+  .tile-label { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-muted); }
+  .tile-value { font-family: var(--font-display); font-weight: 600; font-size: 3rem; line-height: 1; font-variant-numeric: tabular-nums; }
+  .tile-sub { font-size: 13px; color: var(--ink-secondary); }
+  .tile.accent .tile-value { color: var(--accent); }
+  .tile.accent2 .tile-value { color: var(--accent-2); }
+
+  .panel { display: flex; flex-direction: column; gap: .9rem; }
+  .panel-title { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; margin: 0; letter-spacing: .01em; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+  thead th { text-align: right; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-muted); font-weight: 500; padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  thead th:first-child, thead th:nth-child(2) { text-align: left; }
+  tbody td { padding: 9px 12px; text-align: right; border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td:first-child { text-align: left; font-family: var(--font-body); color: var(--ink-muted); font-size: 13px; }
+  tbody td.team-cell { text-align: left; font-family: var(--font-body); font-weight: 500; color: var(--ink); }
+  tbody tr:hover { background: var(--surface-2); }
+  .pct-critical { color: var(--critical); font-weight: 500; }
+  .pct-warning { color: var(--warning); font-weight: 500; }
+  .pct-good { color: var(--good); font-weight: 500; }
+
+  .fixture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .fixture-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 10px; }
+  .fixture-date { font-family: var(--font-mono); font-size: 11px; color: var(--accent-2); text-transform: uppercase; letter-spacing: .04em; }
+  .fixture-teams { font-weight: 500; font-size: 15px; }
+  .fixture-xg { font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted); }
+  .prob-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--border); }
+  .prob-bar span { height: 100%; }
+  .prob-legend { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-muted); font-family: var(--font-mono); }
+  .over-chip { align-self: flex-start; font-size: 11px; font-family: var(--font-mono); background: var(--accent-2-soft); color: var(--accent-2-ink); padding: 2px 8px; border-radius: 999px; }
+
+  .chart-wrap { position: relative; width: 100%; height: 280px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+  .chart-note { font-size: 13px; color: var(--ink-muted); margin: 0; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--ink-secondary); }
+  .legend span.dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+
+  .news-item { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent-2); border-radius: 8px; padding: .8rem 1rem; font-size: 14px; display: flex; flex-direction: column; gap: 2px; }
+  .news-team { font-weight: 500; }
+  .news-window { font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted); }
+  .empty-state { font-size: 14px; color: var(--ink-muted); background: var(--surface-2); border: 1px dashed var(--border-strong); border-radius: 12px; padding: 1rem 1.2rem; }
+
+  .footer { font-size: 12px; color: var(--ink-muted); border-top: 1px solid var(--border); padding-top: 1rem; }
+
+  @media (max-width: 480px) {
+    .title { font-size: 2.2rem; }
+    .tile-value { font-size: 2.4rem; }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="masthead-top">
+      <span class="eyebrow">Premier League 2026/27 &middot; Elo + Poisson model</span>
+      <span class="updated" id="updated-line"></span>
+    </div>
+    <h1 class="title">Title race tracker</h1>
+  </header>
+
+  <section class="hero-tiles" id="hero-tiles"></section>
+
+  <section class="panel">
+    <h2 class="panel-title">League table &amp; season odds</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Pos</th><th>Team</th><th>Pl</th><th>Pts</th>
+            <th>Title%</th><th>Top4%</th><th>Releg%</th><th>Avg pts</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">Next gameweek</h2>
+    <div class="fixture-grid" id="fixture-grid"></div>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">Odds history</h2>
+    <div class="chart-wrap">
+      <canvas id="odds-chart" role="img" aria-label="Line chart of title chance over time for the leading teams"></canvas>
+    </div>
+    <div class="legend" id="chart-legend"></div>
+    <p class="chart-note" id="chart-note"></p>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">Team news</h2>
+    <div id="news-list"></div>
+  </section>
+
+  <footer class="footer">
+    Built from an Elo rating system + independent Poisson goal model, backtested at 68.1% accuracy
+    on decisive historical matches. Simulates the rest of the season 10,000 times per update. Not betting advice.
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+  const DATA = {
+  "generatedAt": "2026-09-14 16:03",
+  "season": "2026/27",
+  "matchesPlayed": 30,
+  "table": [
+    {
+      "team": "Arsenal",
+      "played": 3,
+      "points": 9,
+      "titleChance": 0.5598,
+      "top4Chance": 0.9943,
+      "relegationChance": 0.0,
+      "avgFinalPoints": 80.2
+    },
+    {
+      "team": "Man City",
+      "played": 3,
+      "points": 9,
+      "titleChance": 0.4115,
+      "top4Chance": 0.9854,
+      "relegationChance": 0.0,
+      "avgFinalPoints": 78.2
+    },
+    {
+      "team": "Hull",
+      "played": 3,
+      "points": 7,
+      "titleChance": 0.012,
+      "top4Chance": 0.482,
+      "relegationChance": 0.0025,
+      "avgFinalPoints": 61.7
+    },
+    {
+      "team": "Man United",
+      "played": 3,
+      "points": 4,
+      "titleChance": 0.0085,
+      "top4Chance": 0.3899,
+      "relegationChance": 0.0029,
+      "avgFinalPoints": 59.9
+    },
+    {
+      "team": "Chelsea",
+      "played": 3,
+      "points": 6,
+      "titleChance": 0.0028,
+      "top4Chance": 0.2492,
+      "relegationChance": 0.009,
+      "avgFinalPoints": 57.1
+    },
+    {
+      "team": "Liverpool",
+      "played": 3,
+      "points": 5,
+      "titleChance": 0.0024,
+      "top4Chance": 0.2828,
+      "relegationChance": 0.0055,
+      "avgFinalPoints": 57.7
+    },
+    {
+      "team": "Brighton",
+      "played": 3,
+      "points": 4,
+      "titleChance": 0.0009,
+      "top4Chance": 0.1635,
+      "relegationChance": 0.0174,
+      "avgFinalPoints": 54.7
+    },
+    {
+      "team": "Bournemouth",
+      "played": 3,
+      "points": 2,
+      "titleChance": 0.0006,
+      "top4Chance": 0.0833,
+      "relegationChance": 0.0415,
+      "avgFinalPoints": 51.6
+    },
+    {
+      "team": "Brentford",
+      "played": 3,
+      "points": 5,
+      "titleChance": 0.0006,
+      "top4Chance": 0.1215,
+      "relegationChance": 0.0273,
+      "avgFinalPoints": 53.3
+    },
+    {
+      "team": "Aston Villa",
+      "played": 3,
+      "points": 1,
+      "titleChance": 0.0002,
+      "top4Chance": 0.0444,
+      "relegationChance": 0.0738,
+      "avgFinalPoints": 49.6
+    },
+    {
+      "team": "Leeds",
+      "played": 3,
+      "points": 5,
+      "titleChance": 0.0002,
+      "top4Chance": 0.0424,
+      "relegationChance": 0.0865,
+      "avgFinalPoints": 48.9
+    },
+    {
+      "team": "Nott'm Forest",
+      "played": 3,
+      "points": 2,
+      "titleChance": 0.0002,
+      "top4Chance": 0.0271,
+      "relegationChance": 0.1304,
+      "avgFinalPoints": 47.0
+    },
+    {
+      "team": "Crystal Palace",
+      "played": 3,
+      "points": 3,
+      "titleChance": 0.0001,
+      "top4Chance": 0.0064,
+      "relegationChance": 0.2877,
+      "avgFinalPoints": 42.9
+    },
+    {
+      "team": "Sunderland",
+      "played": 3,
+      "points": 4,
+      "titleChance": 0.0001,
+      "top4Chance": 0.0206,
+      "relegationChance": 0.1371,
+      "avgFinalPoints": 46.7
+    },
+    {
+      "team": "Everton",
+      "played": 3,
+      "points": 5,
+      "titleChance": 0.0001,
+      "top4Chance": 0.0531,
+      "relegationChance": 0.0665,
+      "avgFinalPoints": 49.8
+    },
+    {
+      "team": "Coventry",
+      "played": 3,
+      "points": 0,
+      "titleChance": 0.0,
+      "top4Chance": 0.0001,
+      "relegationChance": 0.7082,
+      "avgFinalPoints": 35.0
+    },
+    {
+      "team": "Ipswich",
+      "played": 3,
+      "points": 3,
+      "titleChance": 0.0,
+      "top4Chance": 0.0011,
+      "relegationChance": 0.5126,
+      "avgFinalPoints": 38.9
+    },
+    {
+      "team": "Fulham",
+      "played": 3,
+      "points": 0,
+      "titleChance": 0.0,
+      "top4Chance": 0.0041,
+      "relegationChance": 0.3628,
+      "avgFinalPoints": 41.3
+    },
+    {
+      "team": "Newcastle",
+      "played": 3,
+      "points": 5,
+      "titleChance": 0.0,
+      "top4Chance": 0.0462,
+      "relegationChance": 0.0762,
+      "avgFinalPoints": 49.3
+    },
+    {
+      "team": "Tottenham",
+      "played": 3,
+      "points": 1,
+      "titleChance": 0.0,
+      "top4Chance": 0.0026,
+      "relegationChance": 0.4521,
+      "avgFinalPoints": 39.9
+    }
+  ],
+  "nextGameweek": [
+    {
+      "date": "2026-09-12",
+      "homeTeam": "Bournemouth",
+      "awayTeam": "Brentford",
+      "homeXg": 1.61,
+      "awayXg": 1.29,
+      "pHome": 0.448,
+      "pDraw": 0.244,
+      "pAway": 0.308,
+      "pOver25": 0.554
+    },
+    {
+      "date": "2026-09-12",
+      "homeTeam": "Chelsea",
+      "awayTeam": "Hull",
+      "homeXg": 1.19,
+      "awayXg": 1.17,
+      "pHome": 0.366,
+      "pDraw": 0.279,
+      "pAway": 0.355,
+      "pOver25": 0.419
+    },
+    {
+      "date": "2026-09-12",
+      "homeTeam": "Crystal Palace",
+      "awayTeam": "Ipswich",
+      "homeXg": 1.81,
+      "awayXg": 1.34,
+      "pHome": 0.487,
+      "pDraw": 0.229,
+      "pAway": 0.284,
+      "pOver25": 0.609
+    },
+    {
+      "date": "2026-09-12",
+      "homeTeam": "Liverpool",
+      "awayTeam": "Fulham",
+      "homeXg": 1.88,
+      "awayXg": 1.09,
+      "pHome": 0.56,
+      "pDraw": 0.224,
+      "pAway": 0.216,
+      "pOver25": 0.569
+    },
+    {
+      "date": "2026-09-12",
+      "homeTeam": "Tottenham",
+      "awayTeam": "Everton",
+      "homeXg": 1.3,
+      "awayXg": 1.26,
+      "pHome": 0.376,
+      "pDraw": 0.266,
+      "pAway": 0.357,
+      "pOver25": 0.47
+    },
+    {
+      "date": "2026-09-12",
+      "homeTeam": "Sunderland",
+      "awayTeam": "Arsenal",
+      "homeXg": 0.7,
+      "awayXg": 1.44,
+      "pHome": 0.182,
+      "pDraw": 0.269,
+      "pAway": 0.549,
+      "pOver25": 0.363
+    },
+    {
+      "date": "2026-09-12",
+      "homeTeam": "Aston Villa",
+      "awayTeam": "Nott'm Forest",
+      "homeXg": 1.46,
+      "awayXg": 1.09,
+      "pHome": 0.455,
+      "pDraw": 0.261,
+      "pAway": 0.284,
+      "pOver25": 0.47
+    },
+    {
+      "date": "2026-09-13",
+      "homeTeam": "Coventry",
+      "awayTeam": "Brighton",
+      "homeXg": 0.93,
+      "awayXg": 1.31,
+      "pHome": 0.265,
+      "pDraw": 0.282,
+      "pAway": 0.453,
+      "pOver25": 0.388
+    },
+    {
+      "date": "2026-09-13",
+      "homeTeam": "Man United",
+      "awayTeam": "Man City",
+      "homeXg": 1.38,
+      "awayXg": 1.73,
+      "pHome": 0.307,
+      "pDraw": 0.234,
+      "pAway": 0.459,
+      "pOver25": 0.602
+    },
+    {
+      "date": "2026-09-14",
+      "homeTeam": "Leeds",
+      "awayTeam": "Newcastle",
+      "homeXg": 1.51,
+      "awayXg": 1.24,
+      "pHome": 0.433,
+      "pDraw": 0.253,
+      "pAway": 0.314,
+      "pOver25": 0.519
+    }
+  ],
+  "oddsHistory": [
+    {
+      "runDate": "2026-09-14",
+      "team": "Arsenal",
+      "titleChance": 0.5681,
+      "top4Chance": 0.9925,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Man City",
+      "titleChance": 0.4085,
+      "top4Chance": 0.9805,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Hull",
+      "titleChance": 0.0089,
+      "top4Chance": 0.4743,
+      "relegationChance": 0.0017
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Man United",
+      "titleChance": 0.0065,
+      "top4Chance": 0.3915,
+      "relegationChance": 0.0037
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Liverpool",
+      "titleChance": 0.0031,
+      "top4Chance": 0.2759,
+      "relegationChance": 0.0078
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Brighton",
+      "titleChance": 0.0017,
+      "top4Chance": 0.1696,
+      "relegationChance": 0.0179
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Chelsea",
+      "titleChance": 0.0013,
+      "top4Chance": 0.2485,
+      "relegationChance": 0.0087
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Brentford",
+      "titleChance": 0.0007,
+      "top4Chance": 0.1298,
+      "relegationChance": 0.0256
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Bournemouth",
+      "titleChance": 0.0006,
+      "top4Chance": 0.0855,
+      "relegationChance": 0.0437
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Aston Villa",
+      "titleChance": 0.0003,
+      "top4Chance": 0.0495,
+      "relegationChance": 0.0784
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Newcastle",
+      "titleChance": 0.0001,
+      "top4Chance": 0.049,
+      "relegationChance": 0.0777
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Everton",
+      "titleChance": 0.0001,
+      "top4Chance": 0.0534,
+      "relegationChance": 0.0663
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Nott'm Forest",
+      "titleChance": 0.0001,
+      "top4Chance": 0.0253,
+      "relegationChance": 0.138
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Fulham",
+      "titleChance": 0.0,
+      "top4Chance": 0.0042,
+      "relegationChance": 0.3673
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Coventry",
+      "titleChance": 0.0,
+      "top4Chance": 0.0003,
+      "relegationChance": 0.7198
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Crystal Palace",
+      "titleChance": 0.0,
+      "top4Chance": 0.0065,
+      "relegationChance": 0.2971
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Ipswich",
+      "titleChance": 0.0,
+      "top4Chance": 0.0011,
+      "relegationChance": 0.5026
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Leeds",
+      "titleChance": 0.0,
+      "top4Chance": 0.0413,
+      "relegationChance": 0.0765
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Sunderland",
+      "titleChance": 0.0,
+      "top4Chance": 0.02,
+      "relegationChance": 0.1311
+    },
+    {
+      "runDate": "2026-09-14",
+      "team": "Tottenham",
+      "titleChance": 0.0,
+      "top4Chance": 0.0013,
+      "relegationChance": 0.4361
+    }
+  ],
+  "teamNews": []
+};
+
+  function pct(x) { return Math.round(x * 1000) / 10 + '%'; }
+
+  document.getElementById('updated-line').textContent =
+    'Updated ' + DATA.generatedAt + ' - ' + DATA.matchesPlayed + ' matches played';
+
+  // --- Hero tiles: title race leaders + a "surprise package" (best top4 chance among non-contenders) ---
+  const sortedByTitle = [...DATA.table].sort((a, b) => b.titleChance - a.titleChance);
+  const contenders = sortedByTitle.slice(0, 2);
+  const surprise = [...DATA.table]
+    .filter(t => t.titleChance < 0.05)
+    .sort((a, b) => b.top4Chance - a.top4Chance)[0];
+
+  const heroEl = document.getElementById('hero-tiles');
+  contenders.forEach((t, i) => {
+    heroEl.insertAdjacentHTML('beforeend', `
+      <div class="tile ${i === 0 ? 'accent' : ''}">
+        <span class="tile-label">Title chance</span>
+        <span class="tile-value">${pct(t.titleChance)}</span>
+        <span class="tile-sub">${t.team} &middot; ${t.points} pts from ${t.played} played</span>
+      </div>`);
+  });
+  if (surprise) {
+    heroEl.insertAdjacentHTML('beforeend', `
+      <div class="tile accent2">
+        <span class="tile-label">Surprise package</span>
+        <span class="tile-value">${pct(surprise.top4Chance)}</span>
+        <span class="tile-sub">${surprise.team}'s top-4 chance</span>
+      </div>`);
+  }
+
+  // --- League table ---
+  const tbody = document.getElementById('table-body');
+  const byTitleThenTop4 = [...DATA.table].sort((a, b) => b.titleChance - a.titleChance || b.top4Chance - a.top4Chance);
+  byTitleThenTop4.forEach((t, i) => {
+    const relClass = t.relegationChance > 0.5 ? 'pct-critical' : t.relegationChance > 0.15 ? 'pct-warning' : '';
+    const titleClass = t.titleChance > 0.05 ? 'pct-good' : '';
+    tbody.insertAdjacentHTML('beforeend', `
+      <tr>
+        <td>${i + 1}</td>
+        <td class="team-cell">${t.team}</td>
+        <td>${t.played}</td>
+        <td>${t.points}</td>
+        <td class="${titleClass}">${pct(t.titleChance)}</td>
+        <td>${pct(t.top4Chance)}</td>
+        <td class="${relClass}">${pct(t.relegationChance)}</td>
+        <td>${t.avgFinalPoints}</td>
+      </tr>`);
+  });
+
+  // --- Next gameweek fixture cards ---
+  const grid = document.getElementById('fixture-grid');
+  DATA.nextGameweek.forEach(f => {
+    const d = new Date(f.date + 'T00:00:00');
+    const dateStr = d.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
+    grid.insertAdjacentHTML('beforeend', `
+      <div class="fixture-card">
+        <span class="fixture-date">${dateStr}</span>
+        <span class="fixture-teams">${f.homeTeam} vs ${f.awayTeam}</span>
+        <span class="fixture-xg">xG ${f.homeXg.toFixed(2)} - ${f.awayXg.toFixed(2)}</span>
+        <div class="prob-bar">
+          <span style="width:${f.pHome*100}%; background: var(--series-1);"></span>
+          <span style="width:${f.pDraw*100}%; background: var(--ink-muted);"></span>
+          <span style="width:${f.pAway*100}%; background: var(--series-2);"></span>
+        </div>
+        <div class="prob-legend">
+          <span>H ${pct(f.pHome)}</span><span>D ${pct(f.pDraw)}</span><span>A ${pct(f.pAway)}</span>
+        </div>
+        <span class="over-chip">Over 2.5 goals: ${pct(f.pOver25)}</span>
+      </div>`);
+  });
+
+  // --- Odds history chart ---
+  const runDates = [...new Set(DATA.oddsHistory.map(r => r.runDate))].sort();
+  const chartNote = document.getElementById('chart-note');
+  const seriesColors = ['--series-1', '--series-2', '--series-3', '--series-4'].map(
+    v => getComputedStyle(document.documentElement).getPropertyValue(v).trim()
+  );
+
+  if (runDates.length < 3) {
+    chartNote.textContent = `History has ${runDates.length} data point${runDates.length === 1 ? '' : 's'} so far -- ` +
+      `this chart fills in as update_weekly.py runs across more gameweeks.`;
+  } else {
+    chartNote.textContent = 'Title chance for the current top 4 contenders, tracked at each weekly update.';
+  }
+
+  const topTeams = sortedByTitle.slice(0, 4).map(t => t.team);
+  const legendEl = document.getElementById('chart-legend');
+  topTeams.forEach((team, i) => {
+    legendEl.insertAdjacentHTML('beforeend',
+      `<span><span class="dot" style="background:${seriesColors[i]}"></span>${team}</span>`);
+  });
+
+  const datasets = topTeams.map((team, i) => ({
+    label: team,
+    data: runDates.map(d => {
+      const row = DATA.oddsHistory.find(r => r.runDate === d && r.team === team);
+      return row ? Math.round(row.titleChance * 1000) / 10 : null;
+    }),
+    borderColor: seriesColors[i],
+    backgroundColor: seriesColors[i],
+    borderWidth: 2,
+    pointRadius: 5,
+    pointHoverRadius: 6,
+    tension: 0.25,
+    spanGaps: true,
+  }));
+
+  const mutedColor = getComputedStyle(document.documentElement).getPropertyValue('--ink-muted').trim();
+  const gridColor = getComputedStyle(document.documentElement).getPropertyValue('--border').trim();
+
+  new Chart(document.getElementById('odds-chart'), {
+    type: 'line',
+    data: { labels: runDates, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.formattedValue}%` } } },
+      scales: {
+        y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%', color: mutedColor }, grid: { color: gridColor } },
+        x: { ticks: { color: mutedColor }, grid: { display: false } },
+      },
+    },
+  });
+
+  // --- Team news ---
+  const newsList = document.getElementById('news-list');
+  if (DATA.teamNews.length === 0) {
+    newsList.innerHTML = `<div class="empty-state">No active team-news adjustments right now. Add rows to data/team_news.csv (team, date range, attack/defense multipliers) when there's a significant injury, suspension, or manager change -- they'll show up here and apply automatically for fixtures in that window.</div>`;
+  } else {
+    DATA.teamNews.forEach(n => {
+      newsList.insertAdjacentHTML('beforeend', `
+        <div class="news-item">
+          <span class="news-team">${n.team}</span>
+          <span>${n.note}</span>
+          <span class="news-window">${n.startDate} to ${n.endDate} &middot; attack &times;${n.attackMultiplier}, defense &times;${n.defenseMultiplier}</span>
+        </div>`);
+    });
+  }
+</script>
