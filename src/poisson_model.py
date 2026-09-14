@@ -139,6 +139,21 @@ def most_likely_scoreline(home_xg, away_xg, max_goals=MAX_GOALS):
     return best_score, best_p
 
 
+def probability_over_line(home_xg, away_xg, line=2.5, max_goals=MAX_GOALS):
+    """
+    P(total goals in the match > line). More informative than a single
+    "most likely scoreline" -- no individual exact score ever dominates a
+    Poisson distribution (see README/chat notes), but "will this match
+    have a lot of goals" is a well-behaved, standard summary.
+    """
+    p_over = 0.0
+    for h in range(max_goals + 1):
+        for a in range(max_goals + 1):
+            if h + a > line:
+                p_over += poisson_pmf(h, home_xg) * poisson_pmf(a, away_xg)
+    return p_over
+
+
 def predicted_result(p_home, p_draw, p_away):
     """Whichever outcome has the highest probability."""
     best = max(p_home, p_draw, p_away)

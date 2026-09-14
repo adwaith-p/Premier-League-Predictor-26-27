@@ -22,6 +22,7 @@ from poisson_model import (
     expected_goals,
     match_outcome_probabilities,
     most_likely_scoreline,
+    probability_over_line,
 )
 
 
@@ -44,9 +45,11 @@ if __name__ == "__main__":
         home_xg, away_xg = expected_goals(f.HomeTeam, f.AwayTeam, attack, defense, avg_home, avg_away)
         p_home, p_draw, p_away = match_outcome_probabilities(home_xg, away_xg)
         (h, a), score_p = most_likely_scoreline(home_xg, away_xg)
+        p_over = probability_over_line(home_xg, away_xg, line=2.5)
 
         date_str = f.Date.strftime("%a %d %b")
         print(f"{date_str}  {f.HomeTeam:15s} vs {f.AwayTeam:15s}  "
               f"xG {home_xg:.2f}-{away_xg:.2f}  "
               f"H/D/A {p_home:.0%}/{p_draw:.0%}/{p_away:.0%}  "
-              f"most likely: {h}-{a} ({score_p:.1%})")
+              f"Over2.5 {p_over:.0%}  "
+              f"single most likely score: {h}-{a} ({score_p:.1%})")
