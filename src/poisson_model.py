@@ -127,6 +127,18 @@ def match_outcome_probabilities(home_xg, away_xg, max_goals=MAX_GOALS):
     return p_home_win, p_draw, p_away_win
 
 
+def most_likely_scoreline(home_xg, away_xg, max_goals=MAX_GOALS):
+    """The single (home_goals, away_goals) combination with the highest probability."""
+    best_score, best_p = (0, 0), 0.0
+    for h in range(max_goals + 1):
+        for a in range(max_goals + 1):
+            p = poisson_pmf(h, home_xg) * poisson_pmf(a, away_xg)
+            if p > best_p:
+                best_p = p
+                best_score = (h, a)
+    return best_score, best_p
+
+
 def predicted_result(p_home, p_draw, p_away):
     """Whichever outcome has the highest probability."""
     best = max(p_home, p_draw, p_away)
