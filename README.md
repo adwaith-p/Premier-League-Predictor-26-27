@@ -52,7 +52,7 @@ season's file.
 - [x] Phase 0 — project setup, venv, historical data pulled (2022/23 – 2026/27 so far)
 - [x] Phase 1 — data loading & cleaning (`src/data_load.py`)
 - [x] Phase 2 — Elo rating engine (`src/elo.py`), backtested at 68.1% accuracy on decisive matches vs 58.6% home-favorite baseline (`src/backtest.py`)
-- [ ] Phase 3 — Poisson goal model (`src/poisson_model.py`)
+- [x] Phase 3 — Poisson goal model (`src/poisson_model.py`), full scoreline probabilities per team strength; 51.2% in-sample 3-way accuracy vs 42.4% baseline
 - [ ] Phase 4 — season Monte Carlo simulator (`src/simulate.py`)
 - [ ] Phase 5 — weekly update script (`src/update_weekly.py`)
 - [ ] Phase 6 — manual team-news adjustments
