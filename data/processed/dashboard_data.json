@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15 08:47",
+  "generatedAt": "2026-09-15 08:54",
   "season": "2026/27",
   "matchesPlayed": 40,
   "table": [
@@ -10,10 +10,10 @@
       "goalsFor": 8,
       "goalsAgainst": 1,
       "goalDifference": 7,
-      "titleChance": 0.591,
-      "top4Chance": 0.9966,
+      "titleChance": 0.5662,
+      "top4Chance": 0.9974,
       "relegationChance": 0.0,
-      "avgFinalPoints": 82.5
+      "avgFinalPoints": 81.9
     },
     {
       "team": "Man City",
@@ -22,8 +22,8 @@
       "goalsFor": 8,
       "goalsAgainst": 2,
       "goalDifference": 6,
-      "titleChance": 0.3968,
-      "top4Chance": 0.9914,
+      "titleChance": 0.4217,
+      "top4Chance": 0.9932,
       "relegationChance": 0.0,
       "avgFinalPoints": 80.0
     },
@@ -34,10 +34,10 @@
       "goalsFor": 5,
       "goalsAgainst": 2,
       "goalDifference": 3,
-      "titleChance": 0.0056,
-      "top4Chance": 0.4617,
-      "relegationChance": 0.0015,
-      "avgFinalPoints": 61.3
+      "titleChance": 0.0046,
+      "top4Chance": 0.4667,
+      "relegationChance": 0.0016,
+      "avgFinalPoints": 61.4
     },
     {
       "team": "Man United",
@@ -46,10 +46,10 @@
       "goalsFor": 7,
       "goalsAgainst": 7,
       "goalDifference": 0,
-      "titleChance": 0.0029,
-      "top4Chance": 0.3868,
-      "relegationChance": 0.0035,
-      "avgFinalPoints": 59.8
+      "titleChance": 0.0031,
+      "top4Chance": 0.3132,
+      "relegationChance": 0.0049,
+      "avgFinalPoints": 58.4
     },
     {
       "team": "Chelsea",
@@ -58,22 +58,10 @@
       "goalsFor": 10,
       "goalsAgainst": 9,
       "goalDifference": 1,
-      "titleChance": 0.0018,
-      "top4Chance": 0.2852,
-      "relegationChance": 0.0069,
-      "avgFinalPoints": 58.0
-    },
-    {
-      "team": "Brentford",
-      "played": 4,
-      "points": 6,
-      "goalsFor": 7,
-      "goalsAgainst": 4,
-      "goalDifference": 3,
-      "titleChance": 0.0008,
-      "top4Chance": 0.1474,
-      "relegationChance": 0.0198,
-      "avgFinalPoints": 54.2
+      "titleChance": 0.0025,
+      "top4Chance": 0.3012,
+      "relegationChance": 0.0055,
+      "avgFinalPoints": 58.4
     },
     {
       "team": "Liverpool",
@@ -82,10 +70,22 @@
       "goalsFor": 6,
       "goalsAgainst": 4,
       "goalDifference": 2,
-      "titleChance": 0.0004,
-      "top4Chance": 0.1939,
-      "relegationChance": 0.0126,
-      "avgFinalPoints": 55.7
+      "titleChance": 0.0008,
+      "top4Chance": 0.2028,
+      "relegationChance": 0.0112,
+      "avgFinalPoints": 55.9
+    },
+    {
+      "team": "Brentford",
+      "played": 4,
+      "points": 6,
+      "goalsFor": 7,
+      "goalsAgainst": 4,
+      "goalDifference": 3,
+      "titleChance": 0.0005,
+      "top4Chance": 0.1578,
+      "relegationChance": 0.0188,
+      "avgFinalPoints": 54.5
     },
     {
       "team": "Brighton",
@@ -95,21 +95,21 @@
       "goalsAgainst": 5,
       "goalDifference": 8,
       "titleChance": 0.0003,
-      "top4Chance": 0.1362,
-      "relegationChance": 0.0189,
+      "top4Chance": 0.141,
+      "relegationChance": 0.0207,
       "avgFinalPoints": 54.0
     },
     {
-      "team": "Nott'm Forest",
+      "team": "Leeds",
       "played": 4,
-      "points": 5,
-      "goalsFor": 4,
-      "goalsAgainst": 4,
-      "goalDifference": 0,
+      "points": 8,
+      "goalsFor": 7,
+      "goalsAgainst": 3,
+      "goalDifference": 4,
       "titleChance": 0.0001,
-      "top4Chance": 0.0561,
-      "relegationChance": 0.0589,
-      "avgFinalPoints": 50.1
+      "top4Chance": 0.1053,
+      "relegationChance": 0.0264,
+      "avgFinalPoints": 53.0
     },
     {
       "team": "Bournemouth",
@@ -119,32 +119,20 @@
       "goalsAgainst": 7,
       "goalDifference": -1,
       "titleChance": 0.0001,
-      "top4Chance": 0.0896,
-      "relegationChance": 0.0379,
-      "avgFinalPoints": 52.1
+      "top4Chance": 0.0991,
+      "relegationChance": 0.0368,
+      "avgFinalPoints": 52.3
     },
     {
-      "team": "Ipswich",
+      "team": "Nott'm Forest",
       "played": 4,
-      "points": 6,
-      "goalsFor": 7,
-      "goalsAgainst": 10,
-      "goalDifference": -3,
+      "points": 5,
+      "goalsFor": 4,
+      "goalsAgainst": 4,
+      "goalDifference": 0,
       "titleChance": 0.0001,
-      "top4Chance": 0.0306,
-      "relegationChance": 0.1094,
-      "avgFinalPoints": 48.0
-    },
-    {
-      "team": "Everton",
-      "played": 4,
-      "points": 6,
-      "goalsFor": 5,
-      "goalsAgainst": 3,
-      "goalDifference": 2,
-      "titleChance": 0.0001,
-      "top4Chance": 0.0552,
-      "relegationChance": 0.0593,
+      "top4Chance": 0.0581,
+      "relegationChance": 0.0587,
       "avgFinalPoints": 50.3
     },
     {
@@ -155,9 +143,21 @@
       "goalsAgainst": 7,
       "goalDifference": -6,
       "titleChance": 0.0,
-      "top4Chance": 0.0119,
-      "relegationChance": 0.2231,
-      "avgFinalPoints": 44.5
+      "top4Chance": 0.0106,
+      "relegationChance": 0.2131,
+      "avgFinalPoints": 44.6
+    },
+    {
+      "team": "Ipswich",
+      "played": 4,
+      "points": 6,
+      "goalsFor": 7,
+      "goalsAgainst": 10,
+      "goalDifference": -3,
+      "titleChance": 0.0,
+      "top4Chance": 0.0304,
+      "relegationChance": 0.1087,
+      "avgFinalPoints": 48.1
     },
     {
       "team": "Fulham",
@@ -167,9 +167,33 @@
       "goalsAgainst": 7,
       "goalDifference": -3,
       "titleChance": 0.0,
-      "top4Chance": 0.0066,
-      "relegationChance": 0.2922,
-      "avgFinalPoints": 42.7
+      "top4Chance": 0.0059,
+      "relegationChance": 0.2815,
+      "avgFinalPoints": 42.8
+    },
+    {
+      "team": "Everton",
+      "played": 4,
+      "points": 6,
+      "goalsFor": 5,
+      "goalsAgainst": 3,
+      "goalDifference": 2,
+      "titleChance": 0.0,
+      "top4Chance": 0.0619,
+      "relegationChance": 0.0567,
+      "avgFinalPoints": 50.4
+    },
+    {
+      "team": "Crystal Palace",
+      "played": 4,
+      "points": 3,
+      "goalsFor": 6,
+      "goalsAgainst": 11,
+      "goalDifference": -5,
+      "titleChance": 0.0,
+      "top4Chance": 0.0039,
+      "relegationChance": 0.3556,
+      "avgFinalPoints": 41.6
     },
     {
       "team": "Coventry",
@@ -180,32 +204,8 @@
       "goalDifference": -10,
       "titleChance": 0.0,
       "top4Chance": 0.0,
-      "relegationChance": 0.9876,
-      "avgFinalPoints": 23.5
-    },
-    {
-      "team": "Crystal Palace",
-      "played": 4,
-      "points": 3,
-      "goalsFor": 6,
-      "goalsAgainst": 11,
-      "goalDifference": -5,
-      "titleChance": 0.0,
-      "top4Chance": 0.0027,
-      "relegationChance": 0.3655,
-      "avgFinalPoints": 41.4
-    },
-    {
-      "team": "Leeds",
-      "played": 4,
-      "points": 8,
-      "goalsFor": 7,
-      "goalsAgainst": 3,
-      "goalDifference": 4,
-      "titleChance": 0.0,
-      "top4Chance": 0.0976,
-      "relegationChance": 0.0299,
-      "avgFinalPoints": 52.6
+      "relegationChance": 0.9875,
+      "avgFinalPoints": 23.7
     },
     {
       "team": "Newcastle",
@@ -215,9 +215,9 @@
       "goalsAgainst": 8,
       "goalDifference": -1,
       "titleChance": 0.0,
-      "top4Chance": 0.0334,
-      "relegationChance": 0.096,
-      "avgFinalPoints": 48.2
+      "top4Chance": 0.0319,
+      "relegationChance": 0.0952,
+      "avgFinalPoints": 48.4
     },
     {
       "team": "Sunderland",
@@ -227,9 +227,9 @@
       "goalsAgainst": 5,
       "goalDifference": -2,
       "titleChance": 0.0,
-      "top4Chance": 0.0154,
-      "relegationChance": 0.1606,
-      "avgFinalPoints": 45.9
+      "top4Chance": 0.0178,
+      "relegationChance": 0.1532,
+      "avgFinalPoints": 46.0
     },
     {
       "team": "Tottenham",
@@ -239,9 +239,9 @@
       "goalsAgainst": 5,
       "goalDifference": -5,
       "titleChance": 0.0,
-      "top4Chance": 0.0017,
-      "relegationChance": 0.5164,
-      "avgFinalPoints": 38.8
+      "top4Chance": 0.0018,
+      "relegationChance": 0.5639,
+      "avgFinalPoints": 38.0
     }
   ],
   "nextGameweek": [
@@ -260,23 +260,23 @@
       "date": "2026-09-19",
       "homeTeam": "Tottenham",
       "awayTeam": "Aston Villa",
-      "homeXg": 1.09,
+      "homeXg": 0.98,
       "awayXg": 1.24,
-      "pHome": 0.323,
-      "pDraw": 0.28,
-      "pAway": 0.397,
-      "pOver25": 0.413
+      "pHome": 0.292,
+      "pDraw": 0.286,
+      "pAway": 0.422,
+      "pOver25": 0.384
     },
     {
       "date": "2026-09-19",
       "homeTeam": "Brighton",
       "awayTeam": "Arsenal",
-      "homeXg": 0.78,
+      "homeXg": 0.86,
       "awayXg": 1.44,
-      "pHome": 0.204,
-      "pDraw": 0.269,
-      "pAway": 0.527,
-      "pOver25": 0.384
+      "pHome": 0.225,
+      "pDraw": 0.268,
+      "pAway": 0.507,
+      "pOver25": 0.405
     },
     {
       "date": "2026-09-19",
@@ -315,12 +315,12 @@
       "date": "2026-09-20",
       "homeTeam": "Fulham",
       "awayTeam": "Man United",
-      "homeXg": 1.25,
-      "awayXg": 1.62,
-      "pHome": 0.297,
-      "pDraw": 0.245,
-      "pAway": 0.458,
-      "pOver25": 0.547
+      "homeXg": 1.35,
+      "awayXg": 1.53,
+      "pHome": 0.336,
+      "pDraw": 0.247,
+      "pAway": 0.417,
+      "pOver25": 0.552
     },
     {
       "date": "2026-09-20",
@@ -500,142 +500,142 @@
     {
       "runDate": "2026-09-15",
       "team": "Arsenal",
-      "titleChance": 0.591,
-      "top4Chance": 0.9966,
+      "titleChance": 0.5662,
+      "top4Chance": 0.9974,
       "relegationChance": 0.0
     },
     {
       "runDate": "2026-09-15",
       "team": "Man City",
-      "titleChance": 0.3968,
-      "top4Chance": 0.9914,
+      "titleChance": 0.4217,
+      "top4Chance": 0.9932,
       "relegationChance": 0.0
     },
     {
       "runDate": "2026-09-15",
       "team": "Hull",
-      "titleChance": 0.0056,
-      "top4Chance": 0.4617,
-      "relegationChance": 0.0015
+      "titleChance": 0.0046,
+      "top4Chance": 0.4667,
+      "relegationChance": 0.0016
     },
     {
       "runDate": "2026-09-15",
       "team": "Man United",
-      "titleChance": 0.0029,
-      "top4Chance": 0.3868,
-      "relegationChance": 0.0035
+      "titleChance": 0.0031,
+      "top4Chance": 0.3132,
+      "relegationChance": 0.0049
     },
     {
       "runDate": "2026-09-15",
       "team": "Chelsea",
-      "titleChance": 0.0018,
-      "top4Chance": 0.2852,
-      "relegationChance": 0.0069
-    },
-    {
-      "runDate": "2026-09-15",
-      "team": "Brentford",
-      "titleChance": 0.0008,
-      "top4Chance": 0.1474,
-      "relegationChance": 0.0198
+      "titleChance": 0.0025,
+      "top4Chance": 0.3012,
+      "relegationChance": 0.0055
     },
     {
       "runDate": "2026-09-15",
       "team": "Liverpool",
-      "titleChance": 0.0004,
-      "top4Chance": 0.1939,
-      "relegationChance": 0.0126
+      "titleChance": 0.0008,
+      "top4Chance": 0.2028,
+      "relegationChance": 0.0112
+    },
+    {
+      "runDate": "2026-09-15",
+      "team": "Brentford",
+      "titleChance": 0.0005,
+      "top4Chance": 0.1578,
+      "relegationChance": 0.0188
     },
     {
       "runDate": "2026-09-15",
       "team": "Brighton",
       "titleChance": 0.0003,
-      "top4Chance": 0.1362,
-      "relegationChance": 0.0189
+      "top4Chance": 0.141,
+      "relegationChance": 0.0207
     },
     {
       "runDate": "2026-09-15",
-      "team": "Nott'm Forest",
+      "team": "Leeds",
       "titleChance": 0.0001,
-      "top4Chance": 0.0561,
-      "relegationChance": 0.0589
+      "top4Chance": 0.1053,
+      "relegationChance": 0.0264
     },
     {
       "runDate": "2026-09-15",
       "team": "Bournemouth",
       "titleChance": 0.0001,
-      "top4Chance": 0.0896,
-      "relegationChance": 0.0379
+      "top4Chance": 0.0991,
+      "relegationChance": 0.0368
     },
     {
       "runDate": "2026-09-15",
-      "team": "Ipswich",
+      "team": "Nott'm Forest",
       "titleChance": 0.0001,
-      "top4Chance": 0.0306,
-      "relegationChance": 0.1094
-    },
-    {
-      "runDate": "2026-09-15",
-      "team": "Everton",
-      "titleChance": 0.0001,
-      "top4Chance": 0.0552,
-      "relegationChance": 0.0593
+      "top4Chance": 0.0581,
+      "relegationChance": 0.0587
     },
     {
       "runDate": "2026-09-15",
       "team": "Aston Villa",
       "titleChance": 0.0,
-      "top4Chance": 0.0119,
-      "relegationChance": 0.2231
+      "top4Chance": 0.0106,
+      "relegationChance": 0.2131
+    },
+    {
+      "runDate": "2026-09-15",
+      "team": "Ipswich",
+      "titleChance": 0.0,
+      "top4Chance": 0.0304,
+      "relegationChance": 0.1087
     },
     {
       "runDate": "2026-09-15",
       "team": "Fulham",
       "titleChance": 0.0,
-      "top4Chance": 0.0066,
-      "relegationChance": 0.2922
+      "top4Chance": 0.0059,
+      "relegationChance": 0.2815
+    },
+    {
+      "runDate": "2026-09-15",
+      "team": "Everton",
+      "titleChance": 0.0,
+      "top4Chance": 0.0619,
+      "relegationChance": 0.0567
+    },
+    {
+      "runDate": "2026-09-15",
+      "team": "Crystal Palace",
+      "titleChance": 0.0,
+      "top4Chance": 0.0039,
+      "relegationChance": 0.3556
     },
     {
       "runDate": "2026-09-15",
       "team": "Coventry",
       "titleChance": 0.0,
       "top4Chance": 0.0,
-      "relegationChance": 0.9876
-    },
-    {
-      "runDate": "2026-09-15",
-      "team": "Crystal Palace",
-      "titleChance": 0.0,
-      "top4Chance": 0.0027,
-      "relegationChance": 0.3655
-    },
-    {
-      "runDate": "2026-09-15",
-      "team": "Leeds",
-      "titleChance": 0.0,
-      "top4Chance": 0.0976,
-      "relegationChance": 0.0299
+      "relegationChance": 0.9875
     },
     {
       "runDate": "2026-09-15",
       "team": "Newcastle",
       "titleChance": 0.0,
-      "top4Chance": 0.0334,
-      "relegationChance": 0.096
+      "top4Chance": 0.0319,
+      "relegationChance": 0.0952
     },
     {
       "runDate": "2026-09-15",
       "team": "Sunderland",
       "titleChance": 0.0,
-      "top4Chance": 0.0154,
-      "relegationChance": 0.1606
+      "top4Chance": 0.0178,
+      "relegationChance": 0.1532
     },
     {
       "runDate": "2026-09-15",
       "team": "Tottenham",
       "titleChance": 0.0,
-      "top4Chance": 0.0017,
-      "relegationChance": 0.5164
+      "top4Chance": 0.0018,
+      "relegationChance": 0.5639
     }
   ],
   "teamNews": [
@@ -814,6 +814,30 @@
       "attackMultiplier": 0.85,
       "defenseMultiplier": 1.0,
       "note": "Xavi Simons (ACL) -- key attacking midfielder, ruled out since April, expected back 01/01/2027 per fantasyfootballscout.co.uk [AI-drafted, verify]"
+    },
+    {
+      "team": "Arsenal",
+      "startDate": "2026-09-15",
+      "endDate": "2026-12-15",
+      "attackMultiplier": 1.0,
+      "defenseMultiplier": 1.1,
+      "note": "William Saliba (back, post-surgery) -- first-choice CB, described as 'long-term' with no return date given; 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [AI-drafted, estimated return, verify]"
+    },
+    {
+      "team": "Man United",
+      "startDate": "2026-09-15",
+      "endDate": "2026-12-15",
+      "attackMultiplier": 0.95,
+      "defenseMultiplier": 1.08,
+      "note": "Manuel Ugarte (knee ligament, surgery) -- first-choice DM, no return date given; 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [AI-drafted, estimated return, verify]"
+    },
+    {
+      "team": "Tottenham",
+      "startDate": "2026-09-15",
+      "endDate": "2026-12-15",
+      "attackMultiplier": 0.9,
+      "defenseMultiplier": 1.0,
+      "note": "Dejan Kulusevski (knee) -- key attacking player, out well over a year with no return date given; 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [AI-drafted, estimated return, verify]"
     }
   ]
 }
