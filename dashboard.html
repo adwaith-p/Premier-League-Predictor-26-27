@@ -140,7 +140,7 @@
       <table>
         <thead>
           <tr>
-            <th>Pos</th><th>Team</th><th>Pl</th><th>Pts</th>
+            <th>Pos</th><th>Team</th><th>Pl</th><th>Pts</th><th>GD</th>
             <th>Title%</th><th>Top4%</th><th>Releg%</th><th>Avg pts</th>
           </tr>
         </thead>
@@ -177,7 +177,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
   const DATA = {
-  "generatedAt": "2026-09-15 08:23",
+  "generatedAt": "2026-09-15 08:29",
   "season": "2026/27",
   "matchesPlayed": 40,
   "table": [
@@ -185,6 +185,9 @@
       "team": "Arsenal",
       "played": 4,
       "points": 12,
+      "goalsFor": 8,
+      "goalsAgainst": 1,
+      "goalDifference": 7,
       "titleChance": 0.5817,
       "top4Chance": 0.9958,
       "relegationChance": 0.0,
@@ -194,6 +197,9 @@
       "team": "Man City",
       "played": 4,
       "points": 12,
+      "goalsFor": 8,
+      "goalsAgainst": 2,
+      "goalDifference": 6,
       "titleChance": 0.4024,
       "top4Chance": 0.9881,
       "relegationChance": 0.0,
@@ -203,6 +209,9 @@
       "team": "Hull",
       "played": 4,
       "points": 8,
+      "goalsFor": 5,
+      "goalsAgainst": 2,
+      "goalDifference": 3,
       "titleChance": 0.0053,
       "top4Chance": 0.4283,
       "relegationChance": 0.0021,
@@ -212,6 +221,9 @@
       "team": "Brighton",
       "played": 4,
       "points": 7,
+      "goalsFor": 13,
+      "goalsAgainst": 5,
+      "goalDifference": 8,
       "titleChance": 0.0031,
       "top4Chance": 0.3275,
       "relegationChance": 0.0045,
@@ -221,6 +233,9 @@
       "team": "Man United",
       "played": 4,
       "points": 4,
+      "goalsFor": 7,
+      "goalsAgainst": 7,
+      "goalDifference": 0,
       "titleChance": 0.003,
       "top4Chance": 0.3116,
       "relegationChance": 0.005,
@@ -230,6 +245,9 @@
       "team": "Liverpool",
       "played": 4,
       "points": 6,
+      "goalsFor": 6,
+      "goalsAgainst": 4,
+      "goalDifference": 2,
       "titleChance": 0.0017,
       "top4Chance": 0.245,
       "relegationChance": 0.0086,
@@ -239,6 +257,9 @@
       "team": "Chelsea",
       "played": 4,
       "points": 7,
+      "goalsFor": 10,
+      "goalsAgainst": 9,
+      "goalDifference": 1,
       "titleChance": 0.0015,
       "top4Chance": 0.2399,
       "relegationChance": 0.0101,
@@ -248,6 +269,9 @@
       "team": "Brentford",
       "played": 4,
       "points": 6,
+      "goalsFor": 7,
+      "goalsAgainst": 4,
+      "goalDifference": 3,
       "titleChance": 0.0004,
       "top4Chance": 0.1278,
       "relegationChance": 0.021,
@@ -257,6 +281,9 @@
       "team": "Leeds",
       "played": 4,
       "points": 8,
+      "goalsFor": 7,
+      "goalsAgainst": 3,
+      "goalDifference": 4,
       "titleChance": 0.0003,
       "top4Chance": 0.0779,
       "relegationChance": 0.0436,
@@ -266,6 +293,9 @@
       "team": "Bournemouth",
       "played": 4,
       "points": 3,
+      "goalsFor": 6,
+      "goalsAgainst": 7,
+      "goalDifference": -1,
       "titleChance": 0.0002,
       "top4Chance": 0.0754,
       "relegationChance": 0.0513,
@@ -275,6 +305,9 @@
       "team": "Ipswich",
       "played": 4,
       "points": 6,
+      "goalsFor": 7,
+      "goalsAgainst": 10,
+      "goalDifference": -3,
       "titleChance": 0.0002,
       "top4Chance": 0.021,
       "relegationChance": 0.1485,
@@ -284,6 +317,9 @@
       "team": "Newcastle",
       "played": 4,
       "points": 5,
+      "goalsFor": 7,
+      "goalsAgainst": 8,
+      "goalDifference": -1,
       "titleChance": 0.0001,
       "top4Chance": 0.0239,
       "relegationChance": 0.1266,
@@ -293,6 +329,9 @@
       "team": "Nott'm Forest",
       "played": 4,
       "points": 5,
+      "goalsFor": 4,
+      "goalsAgainst": 4,
+      "goalDifference": 0,
       "titleChance": 0.0001,
       "top4Chance": 0.041,
       "relegationChance": 0.0737,
@@ -302,6 +341,9 @@
       "team": "Aston Villa",
       "played": 4,
       "points": 1,
+      "goalsFor": 1,
+      "goalsAgainst": 7,
+      "goalDifference": -6,
       "titleChance": 0.0,
       "top4Chance": 0.0253,
       "relegationChance": 0.1246,
@@ -311,6 +353,9 @@
       "team": "Coventry",
       "played": 4,
       "points": 0,
+      "goalsFor": 0,
+      "goalsAgainst": 10,
+      "goalDifference": -10,
       "titleChance": 0.0,
       "top4Chance": 0.0,
       "relegationChance": 0.9883,
@@ -320,6 +365,9 @@
       "team": "Crystal Palace",
       "played": 4,
       "points": 3,
+      "goalsFor": 6,
+      "goalsAgainst": 11,
+      "goalDifference": -5,
       "titleChance": 0.0,
       "top4Chance": 0.0034,
       "relegationChance": 0.3807,
@@ -329,6 +377,9 @@
       "team": "Everton",
       "played": 4,
       "points": 6,
+      "goalsFor": 5,
+      "goalsAgainst": 3,
+      "goalDifference": 2,
       "titleChance": 0.0,
       "top4Chance": 0.0473,
       "relegationChance": 0.067,
@@ -338,6 +389,9 @@
       "team": "Fulham",
       "played": 4,
       "points": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 7,
+      "goalDifference": -3,
       "titleChance": 0.0,
       "top4Chance": 0.0036,
       "relegationChance": 0.3313,
@@ -347,6 +401,9 @@
       "team": "Sunderland",
       "played": 4,
       "points": 4,
+      "goalsFor": 3,
+      "goalsAgainst": 5,
+      "goalDifference": -2,
       "titleChance": 0.0,
       "top4Chance": 0.016,
       "relegationChance": 0.1752,
@@ -356,6 +413,9 @@
       "team": "Tottenham",
       "played": 4,
       "points": 2,
+      "goalsFor": 0,
+      "goalsAgainst": 5,
+      "goalDifference": -5,
       "titleChance": 0.0,
       "top4Chance": 0.0012,
       "relegationChance": 0.4379,
@@ -791,16 +851,19 @@
 
   // --- League table ---
   const tbody = document.getElementById('table-body');
-  const byTitleThenTop4 = [...DATA.table].sort((a, b) => b.titleChance - a.titleChance || b.top4Chance - a.top4Chance);
-  byTitleThenTop4.forEach((t, i) => {
+  const standingsOrder = [...DATA.table].sort((a, b) =>
+    b.points - a.points || b.goalDifference - a.goalDifference || b.goalsFor - a.goalsFor);
+  standingsOrder.forEach((t, i) => {
     const relClass = t.relegationChance > 0.5 ? 'pct-critical' : t.relegationChance > 0.15 ? 'pct-warning' : '';
     const titleClass = t.titleChance > 0.05 ? 'pct-good' : '';
+    const gd = t.goalDifference > 0 ? `+${t.goalDifference}` : t.goalDifference;
     tbody.insertAdjacentHTML('beforeend', `
       <tr>
         <td>${i + 1}</td>
         <td class="team-cell">${t.team}</td>
         <td>${t.played}</td>
         <td>${t.points}</td>
+        <td>${gd}</td>
         <td class="${titleClass}">${pct(t.titleChance)}</td>
         <td>${pct(t.top4Chance)}</td>
         <td class="${relClass}">${pct(t.relegationChance)}</td>

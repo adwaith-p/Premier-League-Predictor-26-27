@@ -140,7 +140,7 @@
       <table>
         <thead>
           <tr>
-            <th>Pos</th><th>Team</th><th>Pl</th><th>Pts</th>
+            <th>Pos</th><th>Team</th><th>Pl</th><th>Pts</th><th>GD</th>
             <th>Title%</th><th>Top4%</th><th>Releg%</th><th>Avg pts</th>
           </tr>
         </thead>
@@ -210,16 +210,19 @@
 
   // --- League table ---
   const tbody = document.getElementById('table-body');
-  const byTitleThenTop4 = [...DATA.table].sort((a, b) => b.titleChance - a.titleChance || b.top4Chance - a.top4Chance);
-  byTitleThenTop4.forEach((t, i) => {
+  const standingsOrder = [...DATA.table].sort((a, b) =>
+    b.points - a.points || b.goalDifference - a.goalDifference || b.goalsFor - a.goalsFor);
+  standingsOrder.forEach((t, i) => {
     const relClass = t.relegationChance > 0.5 ? 'pct-critical' : t.relegationChance > 0.15 ? 'pct-warning' : '';
     const titleClass = t.titleChance > 0.05 ? 'pct-good' : '';
+    const gd = t.goalDifference > 0 ? `+${t.goalDifference}` : t.goalDifference;
     tbody.insertAdjacentHTML('beforeend', `
       <tr>
         <td>${i + 1}</td>
         <td class="team-cell">${t.team}</td>
         <td>${t.played}</td>
         <td>${t.points}</td>
+        <td>${gd}</td>
         <td class="${titleClass}">${pct(t.titleChance)}</td>
         <td>${pct(t.top4Chance)}</td>
         <td class="${relClass}">${pct(t.relegationChance)}</td>
