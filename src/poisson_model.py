@@ -87,7 +87,8 @@ def _find_promoted_teams(matches):
     return latest_teams - prior_teams
 
 
-def compute_team_strengths(matches):
+def compute_team_strengths(matches, promoted_attack_prior=PROMOTED_ATTACK_PRIOR,
+                            promoted_defense_prior=PROMOTED_DEFENSE_PRIOR):
     """
     Attack strength: how many goals a team scores relative to the league
     average (blended across home and away matches).
@@ -97,8 +98,11 @@ def compute_team_strengths(matches):
     less than an average team.
 
     Both are shrunk toward a prior based on sample size -- see _shrink().
-    Promoted teams shrink toward PROMOTED_*_PRIOR instead of "average",
+    Promoted teams shrink toward promoted_*_prior instead of "average",
     since that's what promoted teams actually look like historically.
+    Overridable so backtests can supply a leave-one-out prior (excluding
+    the season under test) instead of the live PROMOTED_*_PRIOR constants,
+    which were fit on all historical promoted-team-seasons at once.
     """
     league_avg_home_goals = matches["FTHG"].mean()
     league_avg_away_goals = matches["FTAG"].mean()
@@ -111,8 +115,8 @@ def compute_team_strengths(matches):
         home = matches[matches["HomeTeam"] == team]
         away = matches[matches["AwayTeam"] == team]
         n_matches = len(home) + len(away)
-        attack_prior = PROMOTED_ATTACK_PRIOR if team in promoted_teams else ESTABLISHED_PRIOR
-        defense_prior = PROMOTED_DEFENSE_PRIOR if team in promoted_teams else ESTABLISHED_PRIOR
+        attack_prior = promoted_attack_prior if team in promoted_teams else ESTABLISHED_PRIOR
+        defense_prior = promoted_defense_prior if team in promoted_teams else ESTABLISHED_PRIOR
 
         home_attack = home["FTHG"].mean() / league_avg_home_goals if len(home) else attack_prior
         away_attack = away["FTAG"].mean() / league_avg_away_goals if len(away) else attack_prior
