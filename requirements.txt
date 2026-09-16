@@ -3,3 +3,5 @@ numpy
 requests
 matplotlib
 jupyter
+xgboost
+scikit-learn
