@@ -59,6 +59,7 @@ season's file.
 - [x] Phase 7 — web dashboard published as an Artifact: https://claude.ai/code/artifact/9ad3c12a-43af-4c19-81fe-c091e8aad30d (`export_dashboard.py` -> `build_dashboard.py` -> republish `dashboard.html`)
 - [x] Phase 8 — historical backtest of the full simulator (`src/backtest_season.py`), rewinding to GW5 of a completed season with a leave-one-out promoted-team prior to avoid leakage. On 2024/25: top-4/relegation Brier scores ~5x better than naive baseline; title prediction confidently backed Man City/Arsenal over eventual champion Liverpool -- a real, permanent limit of results-only models (can't foresee injury collapses), not a bug
   - Extended to a 3-season x 7-cutoff grid (GW5-GW35): top-4/relegation Brier scores improve almost monotonically with more data in every season; title Brier score is genuinely non-monotonic (can get worse mid-season before collapsing to ~0 by GW30) since a title race has only one winner among a few contenders, unlike top-4/relegation's multiple "slots" -- see `data/processed/backtest_grid.csv` and `backtest_calibration.png`
+  - Traced the title favorite week-by-week (`track_title_race`) to explain the mid-season noise: in 2024/25 and 2025/26 the model backs the wrong team briefly early (GW3-10ish) then corrects fast and stays right; in 2023/24 it stays genuinely volatile through GW36 because that title race really was a historic three-way photo finish -- not a model flaw, honest uncertainty about a race that was actually still open. See `data/processed/title_race_trace.csv` / `.png`
 
 ## Setup
 
