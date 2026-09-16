@@ -57,6 +57,7 @@ season's file.
 - [x] Phase 5 — weekly update pipeline (`src/update_weekly.py`), backed by a validated full-season schedule (`src/parse_schedule.py` -> `data/raw/schedule_2026_27.csv`); re-downloads results, flags possible postponements, recomputes everything, logs a snapshot history, predicts the next gameweek
 - [x] Phase 6 — manual team-news adjustments (`src/team_news.py`, `data/team_news.csv`); date-limited injury/suspension multipliers that apply only to fixtures in their window and auto-expire
 - [x] Phase 7 — web dashboard published as an Artifact: https://claude.ai/code/artifact/9ad3c12a-43af-4c19-81fe-c091e8aad30d (`export_dashboard.py` -> `build_dashboard.py` -> republish `dashboard.html`)
+- [x] Phase 8 — historical backtest of the full simulator (`src/backtest_season.py`), rewinding to GW5 of a completed season with a leave-one-out promoted-team prior to avoid leakage. On 2024/25: top-4/relegation Brier scores ~5x better than naive baseline; title prediction confidently backed Man City/Arsenal over eventual champion Liverpool -- a real, permanent limit of results-only models (can't foresee injury collapses), not a bug
 
 ## Setup
 
