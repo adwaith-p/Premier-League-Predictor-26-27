@@ -71,12 +71,12 @@ def actual_final_table(season_matches):
     return teams, standings
 
 
-def run_backtest(test_season, prior_season, n_simulations=10_000):
+def run_backtest(test_season, prior_season, cutoff_matches=GAMEWEEK_CUTOFF_MATCHES, n_simulations=10_000):
     all_matches = load_all_seasons()
     season_matches = all_matches[all_matches["Season"] == test_season].sort_values("Date").reset_index(drop=True)
 
-    known_matches = season_matches.iloc[:GAMEWEEK_CUTOFF_MATCHES]
-    future_matches = season_matches.iloc[GAMEWEEK_CUTOFF_MATCHES:]
+    known_matches = season_matches.iloc[:cutoff_matches]
+    future_matches = season_matches.iloc[cutoff_matches:]
 
     # "recent" window for strength estimation: prior full season + what we know so far
     strength_window = pd.concat([all_matches[all_matches["Season"] == prior_season], known_matches])
@@ -111,6 +111,65 @@ def brier_score(predictions, actual_order, column, actual_slice):
     errors = [(predictions.loc[team, column] - (1.0 if team in actual_set else 0.0)) ** 2
               for team in predictions.index]
     return sum(errors) / len(errors)
+
+
+# Every season we can test: needs a prior season in our data to seed team
+# strengths, so 2022/23 (our earliest) can't be a test season itself.
+TESTABLE_SEASONS = [("2023/24", "2022/23"), ("2024/25", "2023/24"), ("2025/26", "2024/25")]
+CUTOFFS = [50, 100, 150, 200, 250, 300, 350]  # gameweeks 5, 10, 15, 20, 25, 30, 35
+
+
+def run_grid(n_simulations=5_000):
+    """Every (season, cutoff) combination -- how does calibration change as a season unfolds?"""
+    n = 20
+    baseline_title = brier_score(pd.DataFrame({"TitleChance": [1 / n] * n}, index=range(n)),
+                                  list(range(n)), "TitleChance", slice(0, 1))
+    baseline_top4 = brier_score(pd.DataFrame({"Top4Chance": [4 / n] * n}, index=range(n)),
+                                 list(range(n)), "Top4Chance", slice(0, 4))
+    baseline_releg = brier_score(pd.DataFrame({"RelegationChance": [3 / n] * n}, index=range(n)),
+                                  list(range(n)), "RelegationChance", slice(17, 20))
+
+    rows = []
+    for test_season, prior_season in TESTABLE_SEASONS:
+        for cutoff in CUTOFFS:
+            predictions, actual_order, _, _ = run_backtest(
+                test_season, prior_season, cutoff_matches=cutoff, n_simulations=n_simulations
+            )
+            rows.append({
+                "Season": test_season,
+                "Gameweek": cutoff // 10,
+                "TitleBrier": brier_score(predictions, actual_order, "TitleChance", slice(0, 1)),
+                "Top4Brier": brier_score(predictions, actual_order, "Top4Chance", slice(0, 4)),
+                "RelegationBrier": brier_score(predictions, actual_order, "RelegationChance", slice(17, 20)),
+            })
+            print(f"  done: {test_season} @ GW{cutoff // 10}")
+
+    results = pd.DataFrame(rows)
+    return results, baseline_title, baseline_top4, baseline_releg
+
+
+def plot_grid(results, baseline_title, baseline_top4, baseline_releg, output_path):
+    import matplotlib.pyplot as plt
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
+    metrics = [("TitleBrier", "Title", baseline_title), ("Top4Brier", "Top 4", baseline_top4),
+               ("RelegationBrier", "Relegation", baseline_releg)]
+
+    for ax, (column, label, baseline) in zip(axes, metrics):
+        for season, group in results.groupby("Season"):
+            ax.plot(group["Gameweek"], group[column], marker="o", label=season)
+        ax.axhline(baseline, color="gray", linestyle="--", linewidth=1, label="naive baseline")
+        ax.set_title(f"{label} Brier score")
+        ax.set_xlabel("Gameweek cutoff")
+        ax.set_ylabel("Brier score (lower = better)")
+        ax.set_ylim(bottom=0)
+        ax.legend(fontsize=8)
+        ax.grid(alpha=0.3)
+
+    fig.suptitle("Backtest calibration over the season -- does the model get better as it learns more?")
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=150)
+    print(f"\nSaved chart to {output_path}")
 
 
 if __name__ == "__main__":
@@ -158,3 +217,20 @@ if __name__ == "__main__":
     print(f"  Title:      model={title_brier:.4f}   naive baseline (1/20 for everyone)={baseline_title_brier:.4f}")
     print(f"  Top 4:      model={top4_brier:.4f}   naive baseline (4/20 for everyone)={baseline_top4_brier:.4f}")
     print(f"  Relegation: model={releg_brier:.4f}   naive baseline (3/20 for everyone)={baseline_releg_brier:.4f}")
+
+    print("\n" + "=" * 70)
+    print(f"Extending to the full grid: {len(TESTABLE_SEASONS)} seasons x {len(CUTOFFS)} cutoffs "
+          f"= {len(TESTABLE_SEASONS) * len(CUTOFFS)} backtests...\n")
+
+    grid_results, base_title, base_top4, base_releg = run_grid()
+
+    print(f"\nNaive baselines (constant regardless of season/cutoff): "
+          f"title={base_title:.4f}  top4={base_top4:.4f}  relegation={base_releg:.4f}\n")
+
+    pd.set_option("display.float_format", lambda x: f"{x:.4f}")
+    print(grid_results.to_string(index=False))
+
+    grid_results.to_csv(Path(__file__).resolve().parent.parent / "data" / "processed" / "backtest_grid.csv", index=False)
+
+    chart_path = Path(__file__).resolve().parent.parent / "data" / "processed" / "backtest_calibration.png"
+    plot_grid(grid_results, base_title, base_top4, base_releg, chart_path)
