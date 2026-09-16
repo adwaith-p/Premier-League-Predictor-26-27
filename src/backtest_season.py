@@ -148,6 +148,63 @@ def run_grid(n_simulations=5_000):
     return results, baseline_title, baseline_top4, baseline_releg
 
 
+def track_title_race(test_season, prior_season, min_gw=3, max_gw=36, n_simulations=3_000):
+    """
+    Trace, gameweek by gameweek, who the model backs for the title vs the
+    probability it assigns to the team that actually goes on to win. The
+    aggregate Brier score hides WHEN and HOW BADLY the model's favorite
+    diverges from reality -- this makes that visible directly.
+    """
+    rows = []
+    for gw in range(min_gw, max_gw + 1):
+        cutoff = gw * 10
+        predictions, actual_order, _, _ = run_backtest(
+            test_season, prior_season, cutoff_matches=cutoff, n_simulations=n_simulations
+        )
+        champion = actual_order[0]
+        favorite = predictions["TitleChance"].idxmax()
+        rows.append({
+            "Season": test_season,
+            "Gameweek": gw,
+            "Champion": champion,
+            "ChampionProb": predictions.loc[champion, "TitleChance"],
+            "ModelFavorite": favorite,
+            "ModelFavoriteProb": predictions.loc[favorite, "TitleChance"],
+            "FavoriteIsChampion": favorite == champion,
+        })
+    return pd.DataFrame(rows)
+
+
+def plot_title_race(all_traces, output_path):
+    import matplotlib.pyplot as plt
+
+    seasons = all_traces["Season"].unique()
+    fig, axes = plt.subplots(1, len(seasons), figsize=(6 * len(seasons), 4.5), sharey=True)
+    if len(seasons) == 1:
+        axes = [axes]
+
+    for ax, season in zip(axes, seasons):
+        trace = all_traces[all_traces["Season"] == season]
+        champion = trace["Champion"].iloc[0]
+        ax.plot(trace["Gameweek"], trace["ChampionProb"] * 100, marker="o", color="tab:green",
+                label=f"P(actual champion: {champion})")
+        ax.plot(trace["Gameweek"], trace["ModelFavoriteProb"] * 100, marker="x", color="tab:red",
+                linestyle="--", label="P(model's favorite)")
+        wrong = trace[~trace["FavoriteIsChampion"]]
+        ax.scatter(wrong["Gameweek"], wrong["ModelFavoriteProb"] * 100, color="tab:red", s=60, zorder=5)
+        ax.set_title(f"{season} (champion: {champion})")
+        ax.set_xlabel("Gameweek")
+        ax.set_ylabel("Title probability (%)")
+        ax.set_ylim(0, 100)
+        ax.legend(fontsize=8)
+        ax.grid(alpha=0.3)
+
+    fig.suptitle("Title race: probability on the eventual champion vs the model's actual favorite, week by week")
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=150)
+    print(f"Saved chart to {output_path}")
+
+
 def plot_grid(results, baseline_title, baseline_top4, baseline_releg, output_path):
     import matplotlib.pyplot as plt
 
