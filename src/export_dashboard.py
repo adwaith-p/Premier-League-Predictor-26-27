@@ -16,6 +16,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from data_load import RAW_DIR, load_all_seasons
+from elo import run_ratings_history
 from poisson_model import (
     RECENT_SEASONS,
     compute_team_strengths,
@@ -23,6 +24,22 @@ from poisson_model import (
     probability_over_line,
 )
 from team_news import expected_goals_for_fixture, load_team_news
+
+FORM_LOOKBACK = 5  # matches of recent form to show per team, regardless of season boundary
+
+
+def recent_form(team, matches):
+    """Last FORM_LOOKBACK results for `team` (any season, so early-season teams still get 5), oldest first."""
+    team_matches = matches[(matches["HomeTeam"] == team) | (matches["AwayTeam"] == team)].sort_values("Date")
+    last_n = team_matches.tail(FORM_LOOKBACK)
+    results = []
+    for m in last_n.itertuples():
+        if m.HomeTeam == team:
+            result = "W" if m.FTR == "H" else "L" if m.FTR == "A" else "D"
+        else:
+            result = "W" if m.FTR == "A" else "L" if m.FTR == "H" else "D"
+        results.append(result)
+    return results
 from simulate import (
     CURRENT_SEASON,
     get_current_standings,
@@ -57,6 +74,8 @@ if __name__ == "__main__":
     home_xg, away_xg = precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news)
     sim_results = simulate_seasons(standings, fixture_pairs, home_xg, away_xg)
 
+    elo_ratings, _ = run_ratings_history(matches)
+
     table = []
     for team, row in sim_results.iterrows():
         table.append({
@@ -70,6 +89,10 @@ if __name__ == "__main__":
             "top4Chance": round(float(row["Top4Chance"]), 4),
             "relegationChance": round(float(row["RelegationChance"]), 4),
             "avgFinalPoints": round(float(row["AvgFinalPoints"]), 1),
+            "attack": round(float(attack[team]), 3),
+            "defense": round(float(defense[team]), 3),
+            "eloRating": round(float(elo_ratings[team]), 1),
+            "recentForm": recent_form(team, matches),
         })
 
     upcoming = next_gameweek_fixtures(schedule, season_matches)

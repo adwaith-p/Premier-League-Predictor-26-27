@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16 09:20",
+  "generatedAt": "2026-09-16 14:26",
   "season": "2026/27",
   "matchesPlayed": 40,
   "table": [
@@ -13,7 +13,17 @@
       "titleChance": 0.5795,
       "top4Chance": 0.9973,
       "relegationChance": 0.0,
-      "avgFinalPoints": 83.2
+      "avgFinalPoints": 83.2,
+      "attack": 1.31,
+      "defense": 0.546,
+      "eloRating": 1754.2,
+      "recentForm": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ]
     },
     {
       "team": "Man City",
@@ -25,7 +35,17 @@
       "titleChance": 0.4118,
       "top4Chance": 0.9922,
       "relegationChance": 0.0,
-      "avgFinalPoints": 81.2
+      "avgFinalPoints": 81.2,
+      "attack": 1.405,
+      "defense": 0.679,
+      "eloRating": 1729.5,
+      "recentForm": [
+        "L",
+        "W",
+        "W",
+        "W",
+        "W"
+      ]
     },
     {
       "team": "Brighton",
@@ -37,7 +57,17 @@
       "titleChance": 0.0025,
       "top4Chance": 0.3907,
       "relegationChance": 0.0021,
-      "avgFinalPoints": 60.7
+      "avgFinalPoints": 60.7,
+      "attack": 1.109,
+      "defense": 0.889,
+      "eloRating": 1557.6,
+      "recentForm": [
+        "L",
+        "W",
+        "L",
+        "D",
+        "W"
+      ]
     },
     {
       "team": "Man United",
@@ -49,7 +79,17 @@
       "titleChance": 0.0023,
       "top4Chance": 0.3625,
       "relegationChance": 0.0025,
-      "avgFinalPoints": 60.1
+      "avgFinalPoints": 60.1,
+      "attack": 1.266,
+      "defense": 0.99,
+      "eloRating": 1597.8,
+      "recentForm": [
+        "W",
+        "L",
+        "W",
+        "D",
+        "L"
+      ]
     },
     {
       "team": "Chelsea",
@@ -61,7 +101,17 @@
       "titleChance": 0.0016,
       "top4Chance": 0.326,
       "relegationChance": 0.0025,
-      "avgFinalPoints": 59.6
+      "avgFinalPoints": 59.6,
+      "attack": 1.169,
+      "defense": 1.054,
+      "eloRating": 1559.0,
+      "recentForm": [
+        "L",
+        "W",
+        "W",
+        "L",
+        "D"
+      ]
     },
     {
       "team": "Liverpool",
@@ -73,7 +123,17 @@
       "titleChance": 0.0008,
       "top4Chance": 0.2217,
       "relegationChance": 0.0066,
-      "avgFinalPoints": 57.3
+      "avgFinalPoints": 57.3,
+      "attack": 1.173,
+      "defense": 0.974,
+      "eloRating": 1614.8,
+      "recentForm": [
+        "D",
+        "D",
+        "D",
+        "W",
+        "D"
+      ]
     },
     {
       "team": "Brentford",
@@ -85,7 +145,17 @@
       "titleChance": 0.0007,
       "top4Chance": 0.1935,
       "relegationChance": 0.0095,
-      "avgFinalPoints": 56.4
+      "avgFinalPoints": 56.4,
+      "attack": 1.052,
+      "defense": 0.961,
+      "eloRating": 1547.0,
+      "recentForm": [
+        "D",
+        "W",
+        "D",
+        "D",
+        "D"
+      ]
     },
     {
       "team": "Leeds",
@@ -97,7 +167,17 @@
       "titleChance": 0.0004,
       "top4Chance": 0.1319,
       "relegationChance": 0.0162,
-      "avgFinalPoints": 54.8
+      "avgFinalPoints": 54.8,
+      "attack": 0.961,
+      "defense": 1.005,
+      "eloRating": 1511.1,
+      "recentForm": [
+        "L",
+        "W",
+        "D",
+        "D",
+        "W"
+      ]
     },
     {
       "team": "Bournemouth",
@@ -109,7 +189,17 @@
       "titleChance": 0.0002,
       "top4Chance": 0.1217,
       "relegationChance": 0.0208,
-      "avgFinalPoints": 54.1
+      "avgFinalPoints": 54.1,
+      "attack": 1.102,
+      "defense": 1.032,
+      "eloRating": 1572.1,
+      "recentForm": [
+        "D",
+        "L",
+        "D",
+        "D",
+        "D"
+      ]
     },
     {
       "team": "Everton",
@@ -121,7 +211,17 @@
       "titleChance": 0.0001,
       "top4Chance": 0.0725,
       "relegationChance": 0.0354,
-      "avgFinalPoints": 52.1
+      "avgFinalPoints": 52.1,
+      "attack": 0.906,
+      "defense": 0.942,
+      "eloRating": 1521.3,
+      "recentForm": [
+        "L",
+        "W",
+        "D",
+        "D",
+        "D"
+      ]
     },
     {
       "team": "Nott'm Forest",
@@ -133,7 +233,17 @@
       "titleChance": 0.0001,
       "top4Chance": 0.067,
       "relegationChance": 0.035,
-      "avgFinalPoints": 52.1
+      "avgFinalPoints": 52.1,
+      "attack": 0.937,
+      "defense": 0.953,
+      "eloRating": 1516.4,
+      "recentForm": [
+        "D",
+        "L",
+        "D",
+        "D",
+        "W"
+      ]
     },
     {
       "team": "Aston Villa",
@@ -145,7 +255,17 @@
       "titleChance": 0.0,
       "top4Chance": 0.0121,
       "relegationChance": 0.1751,
-      "avgFinalPoints": 45.5
+      "avgFinalPoints": 45.5,
+      "attack": 0.981,
+      "defense": 0.97,
+      "eloRating": 1574.8,
+      "recentForm": [
+        "W",
+        "L",
+        "L",
+        "D",
+        "L"
+      ]
     },
     {
       "team": "Ipswich",
@@ -157,7 +277,17 @@
       "titleChance": 0.0,
       "top4Chance": 0.0007,
       "relegationChance": 0.5142,
-      "avgFinalPoints": 39.2
+      "avgFinalPoints": 39.2,
+      "attack": 0.952,
+      "defense": 1.514,
+      "eloRating": 1394.2,
+      "recentForm": [
+        "L",
+        "W",
+        "L",
+        "L",
+        "W"
+      ]
     },
     {
       "team": "Hull",
@@ -169,7 +299,16 @@
       "titleChance": 0.0,
       "top4Chance": 0.0301,
       "relegationChance": 0.0775,
-      "avgFinalPoints": 49.1
+      "avgFinalPoints": 49.1,
+      "attack": 0.79,
+      "defense": 0.943,
+      "eloRating": 1525.7,
+      "recentForm": [
+        "W",
+        "W",
+        "D",
+        "D"
+      ]
     },
     {
       "team": "Fulham",
@@ -181,7 +320,17 @@
       "titleChance": 0.0,
       "top4Chance": 0.0078,
       "relegationChance": 0.2031,
-      "avgFinalPoints": 44.6
+      "avgFinalPoints": 44.6,
+      "attack": 0.877,
+      "defense": 1.001,
+      "eloRating": 1494.5,
+      "recentForm": [
+        "W",
+        "L",
+        "L",
+        "L",
+        "D"
+      ]
     },
     {
       "team": "Crystal Palace",
@@ -193,7 +342,17 @@
       "titleChance": 0.0,
       "top4Chance": 0.0055,
       "relegationChance": 0.2764,
-      "avgFinalPoints": 43.1
+      "avgFinalPoints": 43.1,
+      "attack": 0.847,
+      "defense": 1.068,
+      "eloRating": 1488.2,
+      "recentForm": [
+        "L",
+        "L",
+        "L",
+        "W",
+        "L"
+      ]
     },
     {
       "team": "Coventry",
@@ -205,7 +364,16 @@
       "titleChance": 0.0,
       "top4Chance": 0.0,
       "relegationChance": 0.9999,
-      "avgFinalPoints": 15.2
+      "avgFinalPoints": 15.2,
+      "attack": 0.416,
+      "defense": 1.559,
+      "eloRating": 1471.4,
+      "recentForm": [
+        "L",
+        "L",
+        "L",
+        "L"
+      ]
     },
     {
       "team": "Newcastle",
@@ -217,7 +385,17 @@
       "titleChance": 0.0,
       "top4Chance": 0.0457,
       "relegationChance": 0.0583,
-      "avgFinalPoints": 50.4
+      "avgFinalPoints": 50.4,
+      "attack": 1.009,
+      "defense": 1.094,
+      "eloRating": 1533.2,
+      "recentForm": [
+        "L",
+        "D",
+        "W",
+        "D",
+        "L"
+      ]
     },
     {
       "team": "Sunderland",
@@ -229,7 +407,17 @@
       "titleChance": 0.0,
       "top4Chance": 0.0196,
       "relegationChance": 0.1069,
-      "avgFinalPoints": 47.6
+      "avgFinalPoints": 47.6,
+      "attack": 0.801,
+      "defense": 0.92,
+      "eloRating": 1524.1,
+      "recentForm": [
+        "W",
+        "L",
+        "W",
+        "D",
+        "L"
+      ]
     },
     {
       "team": "Tottenham",
@@ -241,7 +429,17 @@
       "titleChance": 0.0,
       "top4Chance": 0.0015,
       "relegationChance": 0.458,
-      "avgFinalPoints": 39.8
+      "avgFinalPoints": 39.8,
+      "attack": 0.864,
+      "defense": 1.077,
+      "eloRating": 1439.6,
+      "recentForm": [
+        "W",
+        "L",
+        "L",
+        "D",
+        "D"
+      ]
     }
   ],
   "nextGameweek": [

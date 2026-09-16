@@ -90,6 +90,7 @@
   tbody tr:last-child td { border-bottom: none; }
   tbody td:first-child { text-align: left; font-family: var(--font-body); color: var(--ink-muted); font-size: 13px; }
   tbody td.team-cell { text-align: left; font-family: var(--font-body); font-weight: 500; color: var(--ink); }
+  tbody td.wrap-cell { white-space: normal; font-family: var(--font-body); font-size: 13px; min-width: 260px; max-width: 420px; }
   tbody tr:hover { background: var(--surface-2); }
   .pct-critical { color: var(--critical); font-weight: 500; }
   .pct-warning { color: var(--warning); font-weight: 500; }
@@ -117,6 +118,50 @@
 
   .footer { font-size: 12px; color: var(--ink-muted); border-top: 1px solid var(--border); padding-top: 1rem; }
 
+  .theme-toggle {
+    font-family: var(--font-mono); font-size: 12px; color: var(--ink-secondary);
+    background: var(--surface); border: 1px solid var(--border-strong); border-radius: 999px;
+    padding: 5px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .theme-toggle:hover { background: var(--surface-2); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .intro { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.3rem; }
+  .intro p { margin: 0 0 .6rem; font-size: 14px; line-height: 1.6; color: var(--ink-secondary); max-width: 68ch; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro strong { color: var(--ink); font-weight: 500; }
+
+  .form-strip { display: flex; gap: 3px; justify-content: flex-end; }
+  .form-chip {
+    width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 500; font-family: var(--font-mono);
+  }
+  .form-chip.W { background: var(--good-soft); color: var(--good); }
+  .form-chip.D { background: var(--surface-2); color: var(--ink-muted); }
+  .form-chip.L { background: var(--critical-soft); color: var(--critical); }
+
+  .delta { font-size: 10px; margin-left: 4px; font-family: var(--font-mono); }
+  .delta.up { color: var(--good); }
+  .delta.down { color: var(--critical); }
+  .delta.flat { color: var(--ink-muted); }
+
+  .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+  .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; display: flex; flex-direction: column; gap: 8px; }
+  .chart-card-title { font-size: 13px; color: var(--ink-secondary); font-weight: 500; }
+  .chart-card .chart-inner { position: relative; height: 340px; }
+
+  .match-select {
+    font-family: var(--font-body); font-size: 13px; color: var(--ink); background: var(--surface);
+    border: 1px solid var(--border-strong); border-radius: var(--radius, 8px); padding: 7px 10px;
+    max-width: 320px;
+  }
+  .heatmap-wrap { overflow-x: auto; }
+  .heatmap { border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
+  .heatmap th { padding: 4px 8px; color: var(--ink-muted); font-weight: 500; text-align: center; }
+  .heatmap td { padding: 4px 8px; text-align: center; border-radius: 4px; font-variant-numeric: tabular-nums; }
+  .heatmap-corner { color: var(--ink-muted); font-size: 11px; }
+  .heatmap-best { outline: 2px solid var(--accent); outline-offset: -2px; font-weight: 500; }
+
   @media (max-width: 480px) {
     .title { font-size: 2.2rem; }
     .tile-value { font-size: 2.4rem; }
@@ -127,10 +172,25 @@
   <header class="masthead">
     <div class="masthead-top">
       <span class="eyebrow">Premier League 2026/27 &middot; Elo + Poisson model</span>
-      <span class="updated" id="updated-line"></span>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="updated" id="updated-line"></span>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <span id="theme-toggle-icon">&#9728;</span><span id="theme-toggle-label">Light</span>
+        </button>
+      </div>
     </div>
     <h1 class="title">Premier League Predictor</h1>
   </header>
+
+  <section class="intro">
+    <p><strong>How this works:</strong> every team gets an Elo rating that shifts after each result, plus an
+      attack/defense strength estimated from actual goals scored and conceded. Those feed a Poisson model that
+      turns two teams' strengths into a full probability for every possible scoreline -- not just win/draw/loss.
+      The season is then simulated 10,000 times using those probabilities to get title, top-4, and relegation odds.</p>
+    <p>Everything updates weekly as real results come in, and manually-logged injuries/suspensions
+      (see Team News below) temporarily adjust a team's strength for exactly the fixtures affected, then expire
+      automatically. Backtested against real historical seasons -- see the project README for how well it holds up.</p>
+  </section>
 
   <section class="hero-tiles" id="hero-tiles"></section>
 
@@ -140,7 +200,7 @@
       <table>
         <thead>
           <tr>
-            <th>Pos</th><th>Team</th><th>Pl</th><th>Pts</th><th>GD</th>
+            <th>Pos</th><th>Team</th><th>Form</th><th>Pl</th><th>Pts</th><th>GD</th>
             <th>Title%</th><th>Top4%</th><th>Releg%</th><th>Avg pts</th>
           </tr>
         </thead>
@@ -150,8 +210,30 @@
   </section>
 
   <section class="panel">
+    <h2 class="panel-title">Team strength</h2>
+    <div class="two-col">
+      <div class="chart-card">
+        <span class="chart-card-title">Attack vs defense (Poisson model) &mdash; lower defense is better</span>
+        <div class="chart-inner"><canvas id="strength-chart" role="img"
+          aria-label="Scatter plot of every team's attack and defense strength relative to league average"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <span class="chart-card-title">Elo rating, ranked</span>
+        <div class="chart-inner"><canvas id="elo-chart" role="img"
+          aria-label="Horizontal bar chart of every team's current Elo rating, ranked highest to lowest"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
     <h2 class="panel-title">Next gameweek</h2>
     <div class="fixture-grid" id="fixture-grid"></div>
+
+    <div class="chart-card" style="margin-top: 4px;">
+      <span class="chart-card-title">Scoreline explorer</span>
+      <select class="match-select" id="match-select" aria-label="Choose a fixture to see its scoreline probabilities"></select>
+      <div class="heatmap-wrap"><table class="heatmap" id="heatmap"></table></div>
+    </div>
   </section>
 
   <section class="panel">
@@ -165,7 +247,15 @@
 
   <section class="panel">
     <h2 class="panel-title">Team news</h2>
-    <div id="news-list"></div>
+    <div id="news-empty"></div>
+    <div class="table-wrap" id="news-table-wrap" hidden>
+      <table>
+        <thead>
+          <tr><th>Team</th><th>Details</th><th>Window</th><th>Attack</th><th>Defense</th></tr>
+        </thead>
+        <tbody id="news-body"></tbody>
+      </table>
+    </div>
   </section>
 
   <footer class="footer">
@@ -182,6 +272,31 @@
 
   document.getElementById('updated-line').textContent =
     'Updated ' + DATA.generatedAt + ' - ' + DATA.matchesPlayed + ' matches played';
+
+  // --- Dark mode toggle (persisted per-viewer via localStorage; defaults to system preference) ---
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-toggle-icon');
+  const themeLabel = document.getElementById('theme-toggle-label');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.innerHTML = '&#9789;'; themeLabel.textContent = 'Dark';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeIcon.innerHTML = '&#9728;'; themeLabel.textContent = 'Light';
+    }
+  }
+
+  let storedTheme = null;
+  try { storedTheme = localStorage.getItem('pl-predictor-theme'); } catch (e) {}
+  applyTheme(storedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('pl-predictor-theme', next); } catch (e) {}
+  });
 
   // --- Hero tiles: title race leaders + a "surprise package" (best top4 chance among non-contenders) ---
   const sortedByTitle = [...DATA.table].sort((a, b) => b.titleChance - a.titleChance);
@@ -208,6 +323,28 @@
       </div>`);
   }
 
+  // --- Week-over-week deltas: compare the two most recent snapshot dates in oddsHistory ---
+  const allRunDates = [...new Set(DATA.oddsHistory.map(r => r.runDate))].sort();
+  const latestRunDate = allRunDates[allRunDates.length - 1];
+  const previousRunDate = allRunDates.length > 1 ? allRunDates[allRunDates.length - 2] : null;
+
+  function deltaHtml(team, metric) {
+    if (!previousRunDate) return '';
+    const prevRow = DATA.oddsHistory.find(r => r.runDate === previousRunDate && r.team === team);
+    if (!prevRow) return '';
+    const prevVal = prevRow[metric];
+    const currVal = DATA.table.find(t => t.team === team)[metric];
+    const diff = Math.round((currVal - prevVal) * 1000) / 10;
+    if (Math.abs(diff) < 0.1) return `<span class="delta flat">&#8212;</span>`;
+    const cls = diff > 0 ? 'up' : 'down';
+    const arrow = diff > 0 ? '&#9650;' : '&#9660;';
+    return `<span class="delta ${cls}">${arrow}${Math.abs(diff).toFixed(1)}</span>`;
+  }
+
+  function formHtml(results) {
+    return `<div class="form-strip">${results.map(r => `<span class="form-chip ${r}">${r}</span>`).join('')}</div>`;
+  }
+
   // --- League table ---
   const tbody = document.getElementById('table-body');
   const standingsOrder = [...DATA.table].sort((a, b) =>
@@ -220,12 +357,13 @@
       <tr>
         <td>${i + 1}</td>
         <td class="team-cell">${t.team}</td>
+        <td>${formHtml(t.recentForm)}</td>
         <td>${t.played}</td>
         <td>${t.points}</td>
         <td>${gd}</td>
-        <td class="${titleClass}">${pct(t.titleChance)}</td>
-        <td>${pct(t.top4Chance)}</td>
-        <td class="${relClass}">${pct(t.relegationChance)}</td>
+        <td class="${titleClass}">${pct(t.titleChance)}${deltaHtml(t.team, 'titleChance')}</td>
+        <td>${pct(t.top4Chance)}${deltaHtml(t.team, 'top4Chance')}</td>
+        <td class="${relClass}">${pct(t.relegationChance)}${deltaHtml(t.team, 'relegationChance')}</td>
         <td>${t.avgFinalPoints}</td>
       </tr>`);
   });
@@ -251,6 +389,125 @@
         <span class="over-chip">Over 2.5 goals: ${pct(f.pOver25)}</span>
       </div>`);
   });
+
+  // --- Team strength: attack vs defense scatter ---
+  const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  const inkColor = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();
+  const mutedColorEarly = getComputedStyle(document.documentElement).getPropertyValue('--ink-muted').trim();
+  const gridColorEarly = getComputedStyle(document.documentElement).getPropertyValue('--border').trim();
+
+  new Chart(document.getElementById('strength-chart'), {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        data: DATA.table.map(t => ({ x: t.attack, y: t.defense, team: t.team })),
+        backgroundColor: accentColor,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (ctx) => `${ctx.raw.team}: attack ${ctx.raw.x.toFixed(2)}, defense ${ctx.raw.y.toFixed(2)}` } },
+      },
+      scales: {
+        x: { title: { display: true, text: 'Attack strength (1.0 = average)', color: mutedColorEarly }, ticks: { color: mutedColorEarly }, grid: { color: gridColorEarly } },
+        y: { reverse: true, title: { display: true, text: 'Defense strength (1.0 = average, lower is better)', color: mutedColorEarly }, ticks: { color: mutedColorEarly }, grid: { color: gridColorEarly } },
+      },
+    },
+    plugins: [{
+      id: 'teamLabels',
+      afterDatasetsDraw(chart) {
+        const { ctx } = chart;
+        const meta = chart.getDatasetMeta(0);
+        ctx.save();
+        ctx.font = '10px monospace';
+        ctx.fillStyle = mutedColorEarly;
+        meta.data.forEach((point, i) => {
+          ctx.fillText(DATA.table[i].team, point.x + 7, point.y + 3);
+        });
+        ctx.restore();
+      },
+    }],
+  });
+
+  // --- Team strength: Elo ranking ---
+  const eloSorted = [...DATA.table].sort((a, b) => b.eloRating - a.eloRating);
+  new Chart(document.getElementById('elo-chart'), {
+    type: 'bar',
+    data: {
+      labels: eloSorted.map(t => t.team),
+      datasets: [{ data: eloSorted.map(t => t.eloRating), backgroundColor: accentColor, borderRadius: 4 }],
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `Elo ${Math.round(ctx.raw)}` } } },
+      scales: {
+        x: { ticks: { color: mutedColorEarly }, grid: { color: gridColorEarly } },
+        y: { ticks: { color: inkColor, font: { size: 11 } }, grid: { display: false } },
+      },
+    },
+  });
+
+  // --- Scoreline explorer ---
+  function poissonPmf(k, lambda) {
+    let factorial = 1;
+    for (let i = 2; i <= k; i++) factorial *= i;
+    return (Math.pow(lambda, k) * Math.exp(-lambda)) / factorial;
+  }
+
+  function renderHeatmap(homeTeam, awayTeam, homeXg, awayXg) {
+    const maxGoals = 5;
+    const grid = [];
+    let bestP = 0, bestH = 0, bestA = 0;
+    for (let h = 0; h <= maxGoals; h++) {
+      const row = [];
+      for (let a = 0; a <= maxGoals; a++) {
+        const p = poissonPmf(h, homeXg) * poissonPmf(a, awayXg);
+        row.push(p);
+        if (p > bestP) { bestP = p; bestH = h; bestA = a; }
+      }
+      grid.push(row);
+    }
+
+    const heatmapAccent = getComputedStyle(document.documentElement).getPropertyValue('--accent-soft').trim();
+    let html = `<thead><tr><th class="heatmap-corner">${homeTeam} \\ ${awayTeam}</th>`;
+    for (let a = 0; a <= maxGoals; a++) html += `<th>${a}</th>`;
+    html += `</tr></thead><tbody>`;
+    for (let h = 0; h <= maxGoals; h++) {
+      html += `<tr><th>${h}</th>`;
+      for (let a = 0; a <= maxGoals; a++) {
+        const p = grid[h][a];
+        const intensity = Math.min(p / bestP, 1);
+        const isBest = h === bestH && a === bestA;
+        html += `<td style="background: color-mix(in srgb, ${heatmapAccent} ${(intensity * 100).toFixed(0)}%, transparent);" class="${isBest ? 'heatmap-best' : ''}">${(p * 100).toFixed(1)}%</td>`;
+      }
+      html += `</tr>`;
+    }
+    html += `</tbody>`;
+    document.getElementById('heatmap').innerHTML = html;
+  }
+
+  const matchSelect = document.getElementById('match-select');
+  DATA.nextGameweek.forEach((f, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${f.homeTeam} vs ${f.awayTeam}`;
+    matchSelect.appendChild(opt);
+  });
+  matchSelect.addEventListener('change', () => {
+    const f = DATA.nextGameweek[matchSelect.value];
+    renderHeatmap(f.homeTeam, f.awayTeam, f.homeXg, f.awayXg);
+  });
+  if (DATA.nextGameweek.length) {
+    renderHeatmap(DATA.nextGameweek[0].homeTeam, DATA.nextGameweek[0].awayTeam,
+      DATA.nextGameweek[0].homeXg, DATA.nextGameweek[0].awayXg);
+  }
 
   // --- Odds history chart ---
   const runDates = [...new Set(DATA.oddsHistory.map(r => r.runDate))].sort();
@@ -306,17 +563,22 @@
   });
 
   // --- Team news ---
-  const newsList = document.getElementById('news-list');
+  const newsEmpty = document.getElementById('news-empty');
+  const newsTableWrap = document.getElementById('news-table-wrap');
   if (DATA.teamNews.length === 0) {
-    newsList.innerHTML = `<div class="empty-state">No active team-news adjustments right now. Add rows to data/team_news.csv (team, date range, attack/defense multipliers) when there's a significant injury, suspension, or manager change -- they'll show up here and apply automatically for fixtures in that window.</div>`;
+    newsEmpty.innerHTML = `<div class="empty-state">No active team-news adjustments right now. Add rows to data/team_news.csv (team, date range, attack/defense multipliers) when there's a significant injury, suspension, or manager change -- they'll show up here and apply automatically for fixtures in that window.</div>`;
   } else {
+    newsTableWrap.hidden = false;
+    const newsBody = document.getElementById('news-body');
     DATA.teamNews.forEach(n => {
-      newsList.insertAdjacentHTML('beforeend', `
-        <div class="news-item">
-          <span class="news-team">${n.team}</span>
-          <span>${n.note}</span>
-          <span class="news-window">${n.startDate} to ${n.endDate} &middot; attack &times;${n.attackMultiplier}, defense &times;${n.defenseMultiplier}</span>
-        </div>`);
+      newsBody.insertAdjacentHTML('beforeend', `
+        <tr>
+          <td class="team-cell">${n.team}</td>
+          <td class="wrap-cell">${n.note}</td>
+          <td>${n.startDate} to ${n.endDate}</td>
+          <td>&times;${n.attackMultiplier}</td>
+          <td>&times;${n.defenseMultiplier}</td>
+        </tr>`);
     });
   }
 </script>
