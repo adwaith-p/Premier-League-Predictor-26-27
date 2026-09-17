@@ -30,6 +30,7 @@ from poisson_model import (
     probability_over_line,
 )
 from team_news import expected_goals_for_fixture, load_team_news
+from fixture_congestion import load_other_competitions
 from simulate import (
     CURRENT_SEASON,
     get_current_standings,
@@ -117,11 +118,18 @@ if __name__ == "__main__":
     fixture_pairs = list(zip(fixtures_df["HomeTeam"], fixtures_df["AwayTeam"]))
 
     team_news = load_team_news()
+    other_competitions = load_other_competitions()
     if len(team_news):
         print(f"Applying {len(team_news)} active team-news adjustment(s):")
         print(team_news.to_string(index=False))
+    if len(other_competitions):
+        print(f"Applying {len(other_competitions)} logged non-PL fixture(s) for rest-day calculations:")
+        print(other_competitions.to_string(index=False))
 
-    home_xg, away_xg = precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news)
+    home_xg, away_xg = precompute_fixture_xg(
+        fixtures_df, attack, defense, avg_home, avg_away, team_news,
+        all_matches=matches, other_competitions=other_competitions,
+    )
     sim_results = simulate_seasons(standings, fixture_pairs, home_xg, away_xg)
     log_snapshot(sim_results)
 
@@ -134,7 +142,8 @@ if __name__ == "__main__":
     upcoming = next_gameweek_fixtures(schedule, season_matches)
     for f in upcoming.itertuples():
         h_xg, a_xg = expected_goals_for_fixture(
-            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news
+            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news,
+            all_matches=matches, other_competitions=other_competitions,
         )
         p_home, p_draw, p_away = match_outcome_probabilities(h_xg, a_xg)
         (h, a), score_p = most_likely_scoreline(h_xg, a_xg)

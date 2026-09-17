@@ -24,6 +24,7 @@ from poisson_model import (
     probability_over_line,
 )
 from team_news import expected_goals_for_fixture, load_team_news
+from fixture_congestion import load_other_competitions
 
 FORM_LOOKBACK = 5  # matches of recent form to show per team, regardless of season boundary
 
@@ -70,8 +71,12 @@ if __name__ == "__main__":
     fixtures_df = remaining_fixtures_with_dates(schedule, season_matches)
     fixture_pairs = list(zip(fixtures_df["HomeTeam"], fixtures_df["AwayTeam"]))
     team_news = load_team_news()
+    other_competitions = load_other_competitions()
 
-    home_xg, away_xg = precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news)
+    home_xg, away_xg = precompute_fixture_xg(
+        fixtures_df, attack, defense, avg_home, avg_away, team_news,
+        all_matches=matches, other_competitions=other_competitions,
+    )
     sim_results = simulate_seasons(standings, fixture_pairs, home_xg, away_xg)
 
     elo_ratings, _ = run_ratings_history(matches)
@@ -99,7 +104,8 @@ if __name__ == "__main__":
     next_gameweek = []
     for f in upcoming.itertuples():
         h_xg, a_xg = expected_goals_for_fixture(
-            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news
+            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news,
+            all_matches=matches, other_competitions=other_competitions,
         )
         p_home, p_draw, p_away = match_outcome_probabilities(h_xg, a_xg)
         p_over = probability_over_line(h_xg, a_xg, line=2.5)

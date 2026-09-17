@@ -24,6 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from data_load import RAW_DIR, load_all_seasons
 from poisson_model import RECENT_SEASONS, compute_team_strengths
 from team_news import expected_goals_for_fixture, load_team_news
+from fixture_congestion import load_other_competitions
 
 CURRENT_SEASON = "2026/27"
 N_SIMULATIONS = 10_000
@@ -73,17 +74,21 @@ def remaining_fixtures_with_dates(schedule, season_matches):
     return schedule[is_unplayed].sort_values("Date").reset_index(drop=True)
 
 
-def precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news=None):
+def precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news=None,
+                           all_matches=None, other_competitions=None):
     """
     Expected goals for each remaining fixture, computed once (fixed for
     every simulation). Applies team_news adjustments per fixture based on
     its real date, so a time-limited injury only affects fixtures that
-    actually fall in that window.
+    actually fall in that window. Also applies a short-rest fixture-
+    congestion penalty when all_matches/other_competitions are given --
+    see fixture_congestion.py.
     """
     home_xg, away_xg = [], []
     for f in fixtures_df.itertuples():
         h_xg, a_xg = expected_goals_for_fixture(
-            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news
+            f.HomeTeam, f.AwayTeam, f.Date, attack, defense, avg_home, avg_away, team_news,
+            all_matches=all_matches, other_competitions=other_competitions,
         )
         home_xg.append(h_xg)
         away_xg.append(a_xg)
@@ -158,8 +163,12 @@ if __name__ == "__main__":
     fixture_pairs = list(zip(fixtures_df["HomeTeam"], fixtures_df["AwayTeam"]))
 
     team_news = load_team_news()
+    other_competitions = load_other_competitions()
     attack, defense, avg_home, avg_away = compute_team_strengths(recent)
-    home_xg, away_xg = precompute_fixture_xg(fixtures_df, attack, defense, avg_home, avg_away, team_news)
+    home_xg, away_xg = precompute_fixture_xg(
+        fixtures_df, attack, defense, avg_home, avg_away, team_news,
+        all_matches=matches, other_competitions=other_competitions,
+    )
 
     print(f"{len(season_matches)} matches played, {len(fixtures_df)} remaining. "
           f"Running {N_SIMULATIONS:,} simulations...\n")

@@ -75,10 +75,29 @@ def adjusted_strength(team, match_date, attack, defense, team_news):
     return team_attack, team_defense
 
 
-def expected_goals_for_fixture(home_team, away_team, match_date, attack, defense, avg_home, avg_away, team_news):
-    """Same formula as poisson_model.expected_goals, but using team-news-adjusted strengths for this date."""
+def expected_goals_for_fixture(home_team, away_team, match_date, attack, defense, avg_home, avg_away, team_news,
+                                all_matches=None, other_competitions=None):
+    """
+    Same formula as poisson_model.expected_goals, but using team-news- and
+    fixture-congestion-adjusted strengths for this date.
+
+    all_matches/other_competitions are optional: pass both to also apply a
+    short-rest penalty (see fixture_congestion.py) for teams playing soon
+    after a cup/European fixture. Omit either to skip that adjustment
+    (e.g. backtest_season.py doesn't use it, since it only knows about
+    Premier League matches).
+    """
     home_attack, home_defense = adjusted_strength(home_team, match_date, attack, defense, team_news)
     away_attack, away_defense = adjusted_strength(away_team, match_date, attack, defense, team_news)
+
+    if all_matches is not None and other_competitions is not None:
+        from fixture_congestion import congestion_multiplier
+        home_cong_a, home_cong_d = congestion_multiplier(home_team, match_date, all_matches, other_competitions)
+        away_cong_a, away_cong_d = congestion_multiplier(away_team, match_date, all_matches, other_competitions)
+        home_attack *= home_cong_a
+        home_defense *= home_cong_d
+        away_attack *= away_cong_a
+        away_defense *= away_cong_d
 
     adj_attack = {home_team: home_attack, away_team: away_attack}
     adj_defense = {home_team: home_defense, away_team: away_defense}

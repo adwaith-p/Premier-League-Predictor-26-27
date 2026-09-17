@@ -191,7 +191,10 @@
       The season is then simulated 10,000 times using those probabilities to get title, top-4, and relegation odds.</p>
     <p>Everything updates weekly as real results come in, and manually-logged injuries/suspensions
       (see Team News below) temporarily adjust a team's strength for exactly the fixtures affected, then expire
-      automatically. Backtested against real historical seasons -- see the project README for how well it holds up.</p>
+      automatically. A team playing again within 4 days of a cup or European fixture also gets a small short-rest
+      penalty, based on a manually-logged fixture date, not a full match result -- so this works even for European
+      away trips against clubs we have no data on at all. Backtested against real historical seasons -- see the
+      project README for how well it holds up.</p>
   </section>
 
   <section class="hero-tiles" id="hero-tiles"></section>
