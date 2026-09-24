@@ -19,7 +19,7 @@ import pandas as pd
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from data_load import RAW_DIR, load_all_seasons
+from data_load import RAW_DIR, load_all_seasons, prune_superseded_supplement_rows
 from elo import run_ratings_history
 from backtest import backtest
 from poisson_model import (
@@ -91,6 +91,10 @@ if __name__ == "__main__":
     print("=== Step 1: refreshing results ===")
     refresh_results()
 
+    pruned = prune_superseded_supplement_rows()
+    if pruned:
+        print(f"Pruned {pruned} results_supplement.csv row(s) now covered by the primary source.")
+
     matches = load_all_seasons()
     season_matches = matches[matches["Season"] == CURRENT_SEASON]
     print(f"{len(season_matches)} matches played so far in {CURRENT_SEASON}")
@@ -100,7 +104,8 @@ if __name__ == "__main__":
     overdue = check_for_postponements(schedule, season_matches)
     if len(overdue):
         print(f"WARNING: {len(overdue)} fixture(s) scheduled in the past with no result yet "
-              f"-- possibly postponed or rearranged:")
+              f"-- possibly postponed, rearranged, or the primary source (football-data.co.uk) "
+              f"just hasn't published it yet:")
         print(overdue.to_string(index=False))
     else:
         print("No postponements detected -- every past-dated fixture has a result.")
