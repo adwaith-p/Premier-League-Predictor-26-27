@@ -1,69 +1,69 @@
 {
-  "generatedAt": "2026-10-17 12:03",
+  "generatedAt": "2026-10-25 12:25",
   "season": "2026/27",
-  "matchesPlayed": 60,
+  "matchesPlayed": 75,
   "table": [
     {
-      "team": "Man City",
-      "played": 6,
-      "points": 18,
-      "goalsFor": 16,
+      "team": "Arsenal",
+      "played": 8,
+      "points": 21,
+      "goalsFor": 13,
       "goalsAgainst": 5,
-      "goalDifference": 11,
-      "titleChance": 0.6387,
-      "top4Chance": 0.9986,
+      "goalDifference": 8,
+      "titleChance": 0.543,
+      "top4Chance": 0.9984,
       "relegationChance": 0.0,
-      "avgFinalPoints": 84.2,
-      "attack": 1.455,
-      "defense": 0.697,
-      "eloRating": 1742.3,
+      "avgFinalPoints": 83.1,
+      "attack": 1.273,
+      "defense": 0.557,
+      "eloRating": 1752.5,
       "recentForm": [
         "W",
-        "W",
+        "L",
         "W",
         "W",
         "W"
       ]
     },
     {
-      "team": "Arsenal",
-      "played": 6,
-      "points": 15,
-      "goalsFor": 10,
-      "goalsAgainst": 5,
-      "goalDifference": 5,
-      "titleChance": 0.3452,
-      "top4Chance": 0.993,
+      "team": "Man City",
+      "played": 8,
+      "points": 21,
+      "goalsFor": 20,
+      "goalsAgainst": 9,
+      "goalDifference": 11,
+      "titleChance": 0.4304,
+      "top4Chance": 0.9964,
       "relegationChance": 0.0,
-      "avgFinalPoints": 80.7,
-      "attack": 1.277,
-      "defense": 0.577,
-      "eloRating": 1744.0,
+      "avgFinalPoints": 81.6,
+      "attack": 1.458,
+      "defense": 0.729,
+      "eloRating": 1732.3,
       "recentForm": [
         "W",
         "W",
         "W",
-        "L",
-        "W"
+        "W",
+        "L"
       ]
     },
     {
       "team": "Brighton",
-      "played": 6,
-      "points": 13,
-      "goalsFor": 18,
+      "played": 7,
+      "points": 16,
+      "goalsFor": 23,
       "goalsAgainst": 5,
-      "goalDifference": 13,
-      "titleChance": 0.0131,
-      "top4Chance": 0.7091,
-      "relegationChance": 0.0001,
-      "avgFinalPoints": 65.9,
-      "attack": 1.131,
-      "defense": 0.849,
-      "eloRating": 1581.8,
+      "goalDifference": 18,
+      "titleChance": 0.0243,
+      "top4Chance": 0.808,
+      "relegationChance": 0.0,
+      "avgFinalPoints": 68.2,
+      "attack": 1.177,
+      "defense": 0.837,
+      "eloRating": 1586.9,
       "recentForm": [
-        "L",
         "D",
+        "W",
         "W",
         "W",
         "W"
@@ -71,351 +71,351 @@
     },
     {
       "team": "Chelsea",
-      "played": 6,
-      "points": 10,
-      "goalsFor": 15,
-      "goalsAgainst": 13,
+      "played": 8,
+      "points": 13,
+      "goalsFor": 17,
+      "goalsAgainst": 15,
       "goalDifference": 2,
-      "titleChance": 0.0011,
-      "top4Chance": 0.284,
-      "relegationChance": 0.0029,
-      "avgFinalPoints": 58.5,
-      "attack": 1.182,
-      "defense": 1.063,
-      "eloRating": 1558.9,
+      "titleChance": 0.0009,
+      "top4Chance": 0.2532,
+      "relegationChance": 0.004,
+      "avgFinalPoints": 58.2,
+      "attack": 1.173,
+      "defense": 1.057,
+      "eloRating": 1555.2,
+      "recentForm": [
+        "D",
+        "L",
+        "W",
+        "W",
+        "L"
+      ]
+    },
+    {
+      "team": "Liverpool",
+      "played": 7,
+      "points": 12,
+      "goalsFor": 9,
+      "goalsAgainst": 8,
+      "goalDifference": 1,
+      "titleChance": 0.0008,
+      "top4Chance": 0.3014,
+      "relegationChance": 0.0026,
+      "avgFinalPoints": 59.2,
+      "attack": 1.149,
+      "defense": 0.975,
+      "eloRating": 1627.8,
       "recentForm": [
         "W",
-        "L",
         "D",
+        "W",
         "L",
         "W"
       ]
     },
     {
       "team": "Brentford",
-      "played": 6,
+      "played": 7,
       "points": 10,
-      "goalsFor": 12,
-      "goalsAgainst": 6,
-      "goalDifference": 6,
-      "titleChance": 0.0007,
-      "top4Chance": 0.2669,
-      "relegationChance": 0.0031,
-      "avgFinalPoints": 58.0,
-      "attack": 1.076,
-      "defense": 0.943,
-      "eloRating": 1558.1,
+      "goalsFor": 13,
+      "goalsAgainst": 8,
+      "goalDifference": 5,
+      "titleChance": 0.0003,
+      "top4Chance": 0.1668,
+      "relegationChance": 0.0072,
+      "avgFinalPoints": 55.9,
+      "attack": 1.07,
+      "defense": 0.962,
+      "eloRating": 1546.9,
       "recentForm": [
         "D",
         "D",
-        "D",
-        "W",
-        "D"
-      ]
-    },
-    {
-      "team": "Liverpool",
-      "played": 6,
-      "points": 9,
-      "goalsFor": 7,
-      "goalsAgainst": 7,
-      "goalDifference": 0,
-      "titleChance": 0.0005,
-      "top4Chance": 0.2029,
-      "relegationChance": 0.0055,
-      "avgFinalPoints": 56.7,
-      "attack": 1.137,
-      "defense": 0.979,
-      "eloRating": 1616.6,
-      "recentForm": [
-        "D",
         "W",
         "D",
-        "W",
         "L"
       ]
     },
     {
       "team": "Man United",
-      "played": 6,
-      "points": 6,
-      "goalsFor": 9,
-      "goalsAgainst": 9,
+      "played": 7,
+      "points": 7,
+      "goalsFor": 10,
+      "goalsAgainst": 10,
       "goalDifference": 0,
-      "titleChance": 0.0005,
-      "top4Chance": 0.2498,
-      "relegationChance": 0.0044,
-      "avgFinalPoints": 57.7,
-      "attack": 1.238,
-      "defense": 0.975,
-      "eloRating": 1591.3,
+      "titleChance": 0.0002,
+      "top4Chance": 0.228,
+      "relegationChance": 0.005,
+      "avgFinalPoints": 57.2,
+      "attack": 1.236,
+      "defense": 0.974,
+      "eloRating": 1591.7,
       "recentForm": [
-        "W",
         "D",
         "L",
+        "D",
         "D",
         "D"
       ]
     },
     {
       "team": "Leeds",
-      "played": 6,
-      "points": 9,
-      "goalsFor": 8,
-      "goalsAgainst": 5,
+      "played": 7,
+      "points": 10,
+      "goalsFor": 9,
+      "goalsAgainst": 6,
       "goalDifference": 3,
-      "titleChance": 0.0002,
-      "top4Chance": 0.0851,
-      "relegationChance": 0.0242,
-      "avgFinalPoints": 52.6,
-      "attack": 0.933,
-      "defense": 0.985,
-      "eloRating": 1505.1,
+      "titleChance": 0.0001,
+      "top4Chance": 0.0663,
+      "relegationChance": 0.0275,
+      "avgFinalPoints": 52.1,
+      "attack": 0.93,
+      "defense": 0.988,
+      "eloRating": 1504.7,
       "recentForm": [
-        "D",
         "D",
         "W",
         "D",
-        "L"
+        "L",
+        "D"
       ]
     },
     {
       "team": "Bournemouth",
-      "played": 6,
-      "points": 3,
-      "goalsFor": 7,
+      "played": 7,
+      "points": 6,
+      "goalsFor": 9,
       "goalsAgainst": 13,
-      "goalDifference": -6,
+      "goalDifference": -4,
       "titleChance": 0.0,
-      "top4Chance": 0.0264,
-      "relegationChance": 0.0748,
-      "avgFinalPoints": 48.6,
-      "attack": 1.069,
-      "defense": 1.066,
-      "eloRating": 1553.0,
+      "top4Chance": 0.0444,
+      "relegationChance": 0.0488,
+      "avgFinalPoints": 50.6,
+      "attack": 1.08,
+      "defense": 1.054,
+      "eloRating": 1559.1,
       "recentForm": [
         "D",
         "D",
-        "D",
         "L",
-        "L"
+        "L",
+        "W"
       ]
     },
     {
       "team": "Aston Villa",
-      "played": 6,
-      "points": 5,
-      "goalsFor": 6,
-      "goalsAgainst": 11,
-      "goalDifference": -5,
+      "played": 8,
+      "points": 11,
+      "goalsFor": 9,
+      "goalsAgainst": 12,
+      "goalDifference": -3,
       "titleChance": 0.0,
-      "top4Chance": 0.0168,
-      "relegationChance": 0.11,
-      "avgFinalPoints": 47.1,
-      "attack": 1.011,
-      "defense": 0.985,
-      "eloRating": 1580.2,
+      "top4Chance": 0.063,
+      "relegationChance": 0.0323,
+      "avgFinalPoints": 52.0,
+      "attack": 1.017,
+      "defense": 0.967,
+      "eloRating": 1603.2,
       "recentForm": [
         "L",
-        "D",
-        "L",
         "W",
-        "D"
+        "D",
+        "W",
+        "W"
       ]
     },
     {
       "team": "Coventry",
-      "played": 6,
+      "played": 8,
       "points": 6,
-      "goalsFor": 5,
-      "goalsAgainst": 11,
-      "goalDifference": -6,
+      "goalsFor": 6,
+      "goalsAgainst": 15,
+      "goalDifference": -9,
       "titleChance": 0.0,
       "top4Chance": 0.0,
-      "relegationChance": 0.9162,
-      "avgFinalPoints": 29.8,
-      "attack": 0.631,
-      "defense": 1.364,
-      "eloRating": 1494.0,
+      "relegationChance": 0.9708,
+      "avgFinalPoints": 26.9,
+      "attack": 0.6,
+      "defense": 1.37,
+      "eloRating": 1472.7,
       "recentForm": [
         "L",
-        "L",
-        "L",
         "W",
-        "W"
+        "W",
+        "L",
+        "L"
       ]
     },
     {
       "team": "Crystal Palace",
-      "played": 6,
+      "played": 7,
       "points": 7,
       "goalsFor": 9,
-      "goalsAgainst": 12,
-      "goalDifference": -3,
+      "goalsAgainst": 17,
+      "goalDifference": -8,
       "titleChance": 0.0,
-      "top4Chance": 0.0132,
-      "relegationChance": 0.1413,
-      "avgFinalPoints": 45.7,
-      "attack": 0.849,
-      "defense": 1.037,
-      "eloRating": 1499.1,
+      "top4Chance": 0.0055,
+      "relegationChance": 0.2519,
+      "avgFinalPoints": 43.5,
+      "attack": 0.834,
+      "defense": 1.085,
+      "eloRating": 1493.9,
       "recentForm": [
-        "L",
         "W",
         "L",
         "D",
-        "W"
+        "W",
+        "L"
       ]
     },
     {
       "team": "Ipswich",
-      "played": 6,
-      "points": 9,
-      "goalsFor": 9,
-      "goalsAgainst": 12,
-      "goalDifference": -3,
+      "played": 8,
+      "points": 10,
+      "goalsFor": 12,
+      "goalsAgainst": 16,
+      "goalDifference": -4,
       "titleChance": 0.0,
-      "top4Chance": 0.0017,
-      "relegationChance": 0.3784,
-      "avgFinalPoints": 40.7,
-      "attack": 0.9,
-      "defense": 1.379,
-      "eloRating": 1400.1,
-      "recentForm": [
-        "L",
-        "L",
-        "W",
-        "L",
-        "W"
-      ]
-    },
-    {
-      "team": "Hull",
-      "played": 6,
-      "points": 9,
-      "goalsFor": 8,
-      "goalsAgainst": 6,
-      "goalDifference": 2,
-      "titleChance": 0.0,
-      "top4Chance": 0.0115,
-      "relegationChance": 0.1279,
-      "avgFinalPoints": 46.1,
-      "attack": 0.833,
-      "defense": 1.028,
-      "eloRating": 1516.1,
+      "top4Chance": 0.0012,
+      "relegationChance": 0.3765,
+      "avgFinalPoints": 41.2,
+      "attack": 0.936,
+      "defense": 1.382,
+      "eloRating": 1398.3,
       "recentForm": [
         "W",
-        "D",
-        "D",
+        "L",
+        "W",
         "L",
         "D"
       ]
     },
     {
-      "team": "Fulham",
-      "played": 6,
-      "points": 2,
-      "goalsFor": 6,
-      "goalsAgainst": 10,
-      "goalDifference": -4,
+      "team": "Hull",
+      "played": 7,
+      "points": 9,
+      "goalsFor": 8,
+      "goalsAgainst": 7,
+      "goalDifference": 1,
       "titleChance": 0.0,
-      "top4Chance": 0.0036,
-      "relegationChance": 0.2849,
-      "avgFinalPoints": 42.0,
-      "attack": 0.866,
-      "defense": 0.998,
-      "eloRating": 1484.4,
+      "top4Chance": 0.0054,
+      "relegationChance": 0.214,
+      "avgFinalPoints": 44.1,
+      "attack": 0.773,
+      "defense": 0.99,
+      "eloRating": 1508.1,
       "recentForm": [
-        "L",
-        "L",
         "D",
+        "D",
+        "L",
         "D",
         "L"
       ]
     },
     {
-      "team": "Everton",
-      "played": 6,
-      "points": 10,
+      "team": "Fulham",
+      "played": 8,
+      "points": 8,
       "goalsFor": 8,
-      "goalsAgainst": 5,
-      "goalDifference": 3,
+      "goalsAgainst": 10,
+      "goalDifference": -2,
       "titleChance": 0.0,
-      "top4Chance": 0.0926,
-      "relegationChance": 0.0178,
-      "avgFinalPoints": 53.1,
-      "attack": 0.91,
-      "defense": 0.926,
-      "eloRating": 1528.2,
+      "top4Chance": 0.0075,
+      "relegationChance": 0.155,
+      "avgFinalPoints": 45.7,
+      "attack": 0.864,
+      "defense": 0.963,
+      "eloRating": 1505.1,
       "recentForm": [
         "D",
         "D",
+        "L",
+        "W",
+        "W"
+      ]
+    },
+    {
+      "team": "Everton",
+      "played": 8,
+      "points": 10,
+      "goalsFor": 8,
+      "goalsAgainst": 9,
+      "goalDifference": -1,
+      "titleChance": 0.0,
+      "top4Chance": 0.0276,
+      "relegationChance": 0.0672,
+      "avgFinalPoints": 49.4,
+      "attack": 0.879,
+      "defense": 0.951,
+      "eloRating": 1513.7,
+      "recentForm": [
         "D",
         "W",
-        "D"
+        "D",
+        "L",
+        "L"
       ]
     },
     {
       "team": "Newcastle",
-      "played": 6,
+      "played": 7,
       "points": 8,
       "goalsFor": 10,
-      "goalsAgainst": 13,
-      "goalDifference": -3,
+      "goalsAgainst": 14,
+      "goalDifference": -4,
       "titleChance": 0.0,
-      "top4Chance": 0.0237,
-      "relegationChance": 0.0821,
-      "avgFinalPoints": 48.1,
-      "attack": 1.005,
-      "defense": 1.114,
-      "eloRating": 1531.5,
+      "top4Chance": 0.0118,
+      "relegationChance": 0.1446,
+      "avgFinalPoints": 46.1,
+      "attack": 0.985,
+      "defense": 1.11,
+      "eloRating": 1520.1,
       "recentForm": [
-        "W",
         "D",
         "L",
         "W",
+        "L",
         "L"
       ]
     },
     {
       "team": "Nott'm Forest",
-      "played": 6,
-      "points": 5,
-      "goalsFor": 5,
-      "goalsAgainst": 8,
-      "goalDifference": -3,
+      "played": 8,
+      "points": 6,
+      "goalsFor": 6,
+      "goalsAgainst": 10,
+      "goalDifference": -4,
       "titleChance": 0.0,
-      "top4Chance": 0.0142,
-      "relegationChance": 0.1154,
-      "avgFinalPoints": 46.6,
-      "attack": 0.913,
-      "defense": 0.966,
-      "eloRating": 1495.0,
+      "top4Chance": 0.0087,
+      "relegationChance": 0.1751,
+      "avgFinalPoints": 44.9,
+      "attack": 0.897,
+      "defense": 0.96,
+      "eloRating": 1489.3,
       "recentForm": [
-        "D",
-        "D",
         "W",
         "L",
-        "L"
+        "L",
+        "L",
+        "D"
       ]
     },
     {
       "team": "Sunderland",
-      "played": 6,
+      "played": 7,
       "points": 4,
       "goalsFor": 6,
-      "goalsAgainst": 12,
-      "goalDifference": -6,
+      "goalsAgainst": 14,
+      "goalDifference": -8,
       "titleChance": 0.0,
-      "top4Chance": 0.0063,
-      "relegationChance": 0.1897,
-      "avgFinalPoints": 44.5,
-      "attack": 0.813,
-      "defense": 0.975,
-      "eloRating": 1509.7,
+      "top4Chance": 0.0034,
+      "relegationChance": 0.2704,
+      "avgFinalPoints": 42.9,
+      "attack": 0.8,
+      "defense": 0.984,
+      "eloRating": 1503.6,
       "recentForm": [
-        "W",
         "D",
+        "L",
         "L",
         "L",
         "L"
@@ -423,137 +423,137 @@
     },
     {
       "team": "Tottenham",
-      "played": 6,
-      "points": 3,
-      "goalsFor": 3,
-      "goalsAgainst": 9,
-      "goalDifference": -6,
+      "played": 8,
+      "points": 9,
+      "goalsFor": 8,
+      "goalsAgainst": 10,
+      "goalDifference": -2,
       "titleChance": 0.0,
-      "top4Chance": 0.0006,
-      "relegationChance": 0.5213,
-      "avgFinalPoints": 38.1,
-      "attack": 0.868,
-      "defense": 1.091,
-      "eloRating": 1437.1,
+      "top4Chance": 0.003,
+      "relegationChance": 0.2471,
+      "avgFinalPoints": 43.3,
+      "attack": 0.907,
+      "defense": 1.07,
+      "eloRating": 1461.6,
       "recentForm": [
-        "L",
-        "D",
         "D",
         "L",
-        "D"
+        "D",
+        "W",
+        "W"
       ]
     }
   ],
   "nextGameweek": [
     {
-      "date": "2026-10-17",
-      "homeTeam": "Brentford",
-      "awayTeam": "Liverpool",
-      "homeXg": 1.62,
-      "awayXg": 1.13,
-      "pHome": 0.488,
-      "pDraw": 0.247,
-      "pAway": 0.265,
+      "date": "2026-10-25",
+      "homeTeam": "Crystal Palace",
+      "awayTeam": "Newcastle",
+      "homeXg": 1.42,
+      "awayXg": 1.33,
+      "pHome": 0.394,
+      "pDraw": 0.255,
+      "pAway": 0.351,
       "pOver25": 0.518
     },
     {
-      "date": "2026-10-17",
-      "homeTeam": "Everton",
-      "awayTeam": "Chelsea",
-      "homeXg": 1.56,
-      "awayXg": 1.32,
-      "pHome": 0.432,
-      "pDraw": 0.247,
-      "pAway": 0.321,
-      "pOver25": 0.549
-    },
-    {
-      "date": "2026-10-17",
-      "homeTeam": "Fulham",
-      "awayTeam": "Hull",
-      "homeXg": 1.46,
-      "awayXg": 1.06,
-      "pHome": 0.462,
-      "pDraw": 0.263,
-      "pAway": 0.275,
-      "pOver25": 0.46
-    },
-    {
-      "date": "2026-10-17",
-      "homeTeam": "Newcastle",
-      "awayTeam": "Aston Villa",
-      "homeXg": 1.63,
-      "awayXg": 1.3,
-      "pHome": 0.451,
-      "pDraw": 0.243,
-      "pAway": 0.306,
-      "pOver25": 0.56
-    },
-    {
-      "date": "2026-10-17",
-      "homeTeam": "Man City",
-      "awayTeam": "Ipswich",
-      "homeXg": 3.09,
-      "awayXg": 0.78,
-      "pHome": 0.822,
-      "pDraw": 0.111,
-      "pAway": 0.062,
-      "pOver25": 0.737
-    },
-    {
-      "date": "2026-10-18",
-      "homeTeam": "Leeds",
-      "awayTeam": "Man United",
-      "homeXg": 1.44,
-      "awayXg": 1.47,
-      "pHome": 0.37,
-      "pDraw": 0.247,
-      "pAway": 0.383,
-      "pOver25": 0.557
-    },
-    {
-      "date": "2026-10-18",
-      "homeTeam": "Nott'm Forest",
-      "awayTeam": "Arsenal",
-      "homeXg": 0.89,
-      "awayXg": 1.73,
-      "pHome": 0.192,
-      "pDraw": 0.236,
-      "pAway": 0.572,
-      "pOver25": 0.487
-    },
-    {
-      "date": "2026-10-18",
-      "homeTeam": "Bournemouth",
-      "awayTeam": "Sunderland",
-      "homeXg": 1.57,
-      "awayXg": 1.12,
-      "pHome": 0.479,
-      "pDraw": 0.251,
-      "pAway": 0.27,
-      "pOver25": 0.504
-    },
-    {
-      "date": "2026-10-18",
-      "homeTeam": "Brighton",
-      "awayTeam": "Crystal Palace",
-      "homeXg": 1.89,
-      "awayXg": 0.73,
-      "pHome": 0.648,
-      "pDraw": 0.214,
-      "pAway": 0.138,
-      "pOver25": 0.486
-    },
-    {
-      "date": "2026-10-19",
-      "homeTeam": "Tottenham",
-      "awayTeam": "Coventry",
+      "date": "2026-10-25",
+      "homeTeam": "Liverpool",
+      "awayTeam": "Brighton",
       "homeXg": 1.25,
-      "awayXg": 0.77,
-      "pHome": 0.478,
-      "pDraw": 0.294,
-      "pAway": 0.228,
-      "pOver25": 0.329
+      "awayXg": 1.2,
+      "pHome": 0.377,
+      "pDraw": 0.273,
+      "pAway": 0.351,
+      "pOver25": 0.445
+    },
+    {
+      "date": "2026-10-25",
+      "homeTeam": "Hull",
+      "awayTeam": "Brentford",
+      "homeXg": 1.14,
+      "awayXg": 1.46,
+      "pHome": 0.296,
+      "pDraw": 0.26,
+      "pAway": 0.444,
+      "pOver25": 0.482
+    },
+    {
+      "date": "2026-10-25",
+      "homeTeam": "Man United",
+      "awayTeam": "Bournemouth",
+      "homeXg": 1.87,
+      "awayXg": 1.31,
+      "pHome": 0.507,
+      "pDraw": 0.225,
+      "pAway": 0.267,
+      "pOver25": 0.616
+    },
+    {
+      "date": "2026-10-25",
+      "homeTeam": "Sunderland",
+      "awayTeam": "Leeds",
+      "homeXg": 1.31,
+      "awayXg": 1.13,
+      "pHome": 0.408,
+      "pDraw": 0.273,
+      "pAway": 0.319,
+      "pOver25": 0.44
+    },
+    {
+      "date": "2026-10-31",
+      "homeTeam": "Bournemouth",
+      "awayTeam": "Leeds",
+      "homeXg": 1.73,
+      "awayXg": 1.25,
+      "pHome": 0.487,
+      "pDraw": 0.236,
+      "pAway": 0.277,
+      "pOver25": 0.574
+    },
+    {
+      "date": "2026-10-31",
+      "homeTeam": "Brentford",
+      "awayTeam": "Nott'm Forest",
+      "homeXg": 1.66,
+      "awayXg": 1.06,
+      "pHome": 0.512,
+      "pDraw": 0.244,
+      "pAway": 0.244,
+      "pOver25": 0.511
+    },
+    {
+      "date": "2026-10-31",
+      "homeTeam": "Coventry",
+      "awayTeam": "Sunderland",
+      "homeXg": 0.81,
+      "awayXg": 1.35,
+      "pHome": 0.226,
+      "pDraw": 0.28,
+      "pAway": 0.494,
+      "pOver25": 0.368
+    },
+    {
+      "date": "2026-10-31",
+      "homeTeam": "Chelsea",
+      "awayTeam": "Man United",
+      "homeXg": 1.75,
+      "awayXg": 1.52,
+      "pHome": 0.433,
+      "pDraw": 0.23,
+      "pAway": 0.337,
+      "pOver25": 0.635
+    },
+    {
+      "date": "2026-10-31",
+      "homeTeam": "Hull",
+      "awayTeam": "Ipswich",
+      "homeXg": 1.64,
+      "awayXg": 1.28,
+      "pHome": 0.459,
+      "pDraw": 0.243,
+      "pAway": 0.299,
+      "pOver25": 0.558
     }
   ],
   "oddsHistory": [
@@ -1676,6 +1676,146 @@
       "titleChance": 0.0,
       "top4Chance": 0.0006,
       "relegationChance": 0.5213
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Arsenal",
+      "titleChance": 0.543,
+      "top4Chance": 0.9984,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Man City",
+      "titleChance": 0.4304,
+      "top4Chance": 0.9964,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Brighton",
+      "titleChance": 0.0243,
+      "top4Chance": 0.808,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Chelsea",
+      "titleChance": 0.0009,
+      "top4Chance": 0.2532,
+      "relegationChance": 0.004
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Liverpool",
+      "titleChance": 0.0008,
+      "top4Chance": 0.3014,
+      "relegationChance": 0.0026
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Brentford",
+      "titleChance": 0.0003,
+      "top4Chance": 0.1668,
+      "relegationChance": 0.0072
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Man United",
+      "titleChance": 0.0002,
+      "top4Chance": 0.228,
+      "relegationChance": 0.005
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Leeds",
+      "titleChance": 0.0001,
+      "top4Chance": 0.0663,
+      "relegationChance": 0.0275
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Bournemouth",
+      "titleChance": 0.0,
+      "top4Chance": 0.0444,
+      "relegationChance": 0.0488
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Aston Villa",
+      "titleChance": 0.0,
+      "top4Chance": 0.063,
+      "relegationChance": 0.0323
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Coventry",
+      "titleChance": 0.0,
+      "top4Chance": 0.0,
+      "relegationChance": 0.9708
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Crystal Palace",
+      "titleChance": 0.0,
+      "top4Chance": 0.0055,
+      "relegationChance": 0.2519
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Ipswich",
+      "titleChance": 0.0,
+      "top4Chance": 0.0012,
+      "relegationChance": 0.3765
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Hull",
+      "titleChance": 0.0,
+      "top4Chance": 0.0054,
+      "relegationChance": 0.214
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Fulham",
+      "titleChance": 0.0,
+      "top4Chance": 0.0075,
+      "relegationChance": 0.155
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Everton",
+      "titleChance": 0.0,
+      "top4Chance": 0.0276,
+      "relegationChance": 0.0672
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Newcastle",
+      "titleChance": 0.0,
+      "top4Chance": 0.0118,
+      "relegationChance": 0.1446
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Nott'm Forest",
+      "titleChance": 0.0,
+      "top4Chance": 0.0087,
+      "relegationChance": 0.1751
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Sunderland",
+      "titleChance": 0.0,
+      "top4Chance": 0.0034,
+      "relegationChance": 0.2704
+    },
+    {
+      "runDate": "2026-10-25",
+      "team": "Tottenham",
+      "titleChance": 0.0,
+      "top4Chance": 0.003,
+      "relegationChance": 0.2471
     }
   ],
   "teamNews": [
@@ -1685,7 +1825,7 @@
       "endDate": "2027-01-01",
       "attackMultiplier": 0.85,
       "defenseMultiplier": 1.0,
-      "note": "Hugo Ekitike (Achilles) -- first-choice striker, expected return 01/01/2027 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Hugo Ekitike (Achilles) -- first-choice striker, expected return 01/01/2027 per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Aston Villa",
@@ -1693,23 +1833,15 @@
       "endDate": "2027-04-01",
       "attackMultiplier": 0.95,
       "defenseMultiplier": 1.12,
-      "note": "Amadou Onana (ACL) -- first-choice defensive midfielder, expected return 01/04/2027 (out ~9 months) per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
-    },
-    {
-      "team": "Brentford",
-      "startDate": "2026-09-15",
-      "endDate": "2026-10-10",
-      "attackMultiplier": 1.0,
-      "defenseMultiplier": 1.08,
-      "note": "Nathan Collins (calf) -- first-choice CB, expected back 10/10/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Amadou Onana (ACL) -- first-choice defensive midfielder, expected return 01/04/2027 (out ~9 months) per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Brighton",
       "startDate": "2026-09-15",
-      "endDate": "2026-10-31",
+      "endDate": "2026-11-08",
       "attackMultiplier": 0.85,
       "defenseMultiplier": 1.0,
-      "note": "Kaoru Mitoma (hamstring) -- Brighton's key winger, expected back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2026-10-31) [verified & date updated vs source, 2026-10-17]"
+      "note": "Kaoru Mitoma (hamstring) -- Brighton's key winger, expected back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2026-10-31) (date updated from 2026-10-31 to 2026-11-08) [verified & date updated vs source, 2026-10-25]"
     },
     {
       "team": "Coventry",
@@ -1717,39 +1849,15 @@
       "endDate": "2026-11-21",
       "attackMultiplier": 0.9,
       "defenseMultiplier": 1.0,
-      "note": "Haji Wright (thigh) -- starting striker, expected back 21/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Haji Wright (thigh) -- starting striker, expected back 21/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Crystal Palace",
       "startDate": "2026-09-15",
       "endDate": "2026-10-25",
       "attackMultiplier": 1.0,
-      "defenseMultiplier": 1.1,
-      "note": "Axel Disasi suspended (3-match ban) -- starting CB, back 25/10/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
-    },
-    {
-      "team": "Crystal Palace",
-      "startDate": "2026-09-15",
-      "endDate": "2026-10-18",
-      "attackMultiplier": 0.82,
-      "defenseMultiplier": 1.0,
-      "note": "Jean-Philippe Mateta (hamstring) -- Palace's #1 striker, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-18) [verified & date updated vs source, 2026-10-17]"
-    },
-    {
-      "team": "Crystal Palace",
-      "startDate": "2026-09-15",
-      "endDate": "2026-10-18",
-      "attackMultiplier": 1.0,
       "defenseMultiplier": 1.12,
-      "note": "Dean Henderson (ankle) -- starting goalkeeper, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-18) [verified & date updated vs source, 2026-10-17]"
-    },
-    {
-      "team": "Fulham",
-      "startDate": "2026-09-15",
-      "endDate": "2026-10-24",
-      "attackMultiplier": 0.95,
-      "defenseMultiplier": 1.03,
-      "note": "Tom Cairney (knee) -- veteran starting midfielder, expected back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2026-10-24) [verified & date updated vs source, 2026-10-17]"
+      "note": "Dean Henderson (ankle) -- starting goalkeeper, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-18) (date updated from 2026-10-18 to 2026-10-25) [verified & date updated vs source, 2026-10-25]"
     },
     {
       "team": "Hull",
@@ -1757,7 +1865,7 @@
       "endDate": "2026-12-05",
       "attackMultiplier": 1.0,
       "defenseMultiplier": 1.12,
-      "note": "Jack Butland (shoulder) -- starting goalkeeper, expected back 05/12/2026 (date updated from 2026-11-07 to 2026-12-05) per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Jack Butland (shoulder) -- starting goalkeeper, expected back 05/12/2026 (date updated from 2026-11-07 to 2026-12-05) per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Leeds",
@@ -1765,23 +1873,15 @@
       "endDate": "2026-10-31",
       "attackMultiplier": 1.0,
       "defenseMultiplier": 1.08,
-      "note": "Joe Rodon (hamstring) -- starting CB, out 8-10 weeks, expected back 31/10/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Joe Rodon (hamstring) -- starting CB, out 8-10 weeks, expected back 31/10/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Nott'm Forest",
       "startDate": "2026-09-15",
-      "endDate": "2026-10-18",
-      "attackMultiplier": 1.0,
-      "defenseMultiplier": 1.08,
-      "note": "Nikola Milenkovic (hamstring) -- starting CB, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-18; now listed as a knock/bone bruise) [verified & date updated vs source, 2026-10-17]"
-    },
-    {
-      "team": "Nott'm Forest",
-      "startDate": "2026-09-15",
-      "endDate": "2026-10-23",
+      "endDate": "2026-11-21",
       "attackMultiplier": 1.0,
       "defenseMultiplier": 1.05,
-      "note": "Nicolo Savona (knee) -- regular defender, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-23) [verified & date updated vs source, 2026-10-17]"
+      "note": "Nicolo Savona (knee) -- regular defender, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-23) (date updated from 2026-10-23 to 2026-11-21) [verified & date updated vs source, 2026-10-25]"
     },
     {
       "team": "Tottenham",
@@ -1789,7 +1889,7 @@
       "endDate": "2026-10-31",
       "attackMultiplier": 0.9,
       "defenseMultiplier": 1.0,
-      "note": "Mykhailo Mudryk (ankle) -- starting winger, out 6-8 weeks, expected back 31/10/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Mykhailo Mudryk (ankle) -- starting winger, out 6-8 weeks, expected back 31/10/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Tottenham",
@@ -1797,7 +1897,7 @@
       "endDate": "2027-01-01",
       "attackMultiplier": 0.85,
       "defenseMultiplier": 1.0,
-      "note": "Xavi Simons (ACL) -- key attacking midfielder, ruled out since April, expected back 01/01/2027 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Xavi Simons (ACL) -- key attacking midfielder, ruled out since April, expected back 01/01/2027 per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Arsenal",
@@ -1805,7 +1905,7 @@
       "endDate": "2026-11-21",
       "attackMultiplier": 1.0,
       "defenseMultiplier": 1.1,
-      "note": "William Saliba (back, post-surgery) -- first-choice CB, described as 'long-term' with no return date given; 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed (date updated from 2026-12-15 to 2026-11-21; source now gives a real date, replacing the 15/12 placeholder) [verified & date updated vs source, 2026-10-17]"
+      "note": "William Saliba (back, post-surgery) -- first-choice CB, described as 'long-term' with no return date given; 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed (date updated from 2026-12-15 to 2026-11-21; source now gives a real date, replacing the 15/12 placeholder) [verified vs source, 2026-10-25]"
     },
     {
       "team": "Man United",
@@ -1813,7 +1913,7 @@
       "endDate": "2026-12-15",
       "attackMultiplier": 0.98,
       "defenseMultiplier": 1.03,
-      "note": "Manuel Ugarte (knee ligament, surgery) -- DM, no return date given; downgraded from 'integral' after user review, 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [confirmed still 'Unknown' on source as of 2026-10-17]"
+      "note": "Manuel Ugarte (knee ligament, surgery) -- DM, no return date given; downgraded from 'integral' after user review, 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [confirmed still 'Unknown' on source as of 2026-10-25]"
     },
     {
       "team": "Tottenham",
@@ -1821,15 +1921,7 @@
       "endDate": "2026-12-15",
       "attackMultiplier": 0.9,
       "defenseMultiplier": 1.0,
-      "note": "Dejan Kulusevski (knee) -- key attacking player, out well over a year with no return date given; 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [confirmed still 'Unknown' on source as of 2026-10-17]"
-    },
-    {
-      "team": "Aston Villa",
-      "startDate": "2026-09-16",
-      "endDate": "2026-10-24",
-      "attackMultiplier": 0.98,
-      "defenseMultiplier": 1.06,
-      "note": "Ian Maatsen (ankle) -- starting LB, leaning integral per user review, back 31/10/2026 (6-8 wks) per fantasyfootballscout.co.uk (date updated from 2026-10-31 to 2026-10-24) [verified & date updated vs source, 2026-10-17]"
+      "note": "Dejan Kulusevski (knee) -- key attacking player, out well over a year with no return date given; 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [confirmed still 'Unknown' on source as of 2026-10-25]"
     },
     {
       "team": "Bournemouth",
@@ -1837,7 +1929,7 @@
       "endDate": "2026-11-28",
       "attackMultiplier": 0.98,
       "defenseMultiplier": 1.04,
-      "note": "Julian Araujo (thigh) -- rotational/integral in between per user review, back 28/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-17]"
+      "note": "Julian Araujo (thigh) -- rotational/integral in between per user review, back 28/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-10-25]"
     },
     {
       "team": "Newcastle",
@@ -1845,7 +1937,7 @@
       "endDate": "2026-10-25",
       "attackMultiplier": 0.9,
       "defenseMultiplier": 1.0,
-      "note": "Anthony Elanga (unspecified) -- important player to Newcastle per user review, back 12/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-12 to 2026-10-25; source now gives a real date, replacing the 12/10 estimate) [verified & date updated vs source, 2026-10-17]"
+      "note": "Anthony Elanga (unspecified) -- important player to Newcastle per user review, back 12/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-12 to 2026-10-25; source now gives a real date, replacing the 12/10 estimate) [verified vs source, 2026-10-25]"
     },
     {
       "team": "Chelsea",
@@ -1853,7 +1945,7 @@
       "endDate": "2027-01-01",
       "attackMultiplier": 0.97,
       "defenseMultiplier": 1.05,
-      "note": "Reece James (unspecified) -- impactful player and captain per user review, back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2027-01-01; now knee surgery, out around three months) [verified & date updated vs source, 2026-10-17]"
+      "note": "Reece James (unspecified) -- impactful player and captain per user review, back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2027-01-01; now knee surgery, out around three months) [verified vs source, 2026-10-25]"
     },
     {
       "team": "Man United",
@@ -1861,7 +1953,7 @@
       "endDate": "2026-11-01",
       "attackMultiplier": 0.92,
       "defenseMultiplier": 1.0,
-      "note": "Benjamin Sesko (shin) -- now Man United's primary senior centre-forward per user review 2026-10-17 (upgraded from 'mostly a sub', x0.97 -> x0.92); confirmed out vs Leeds 18/10, manager says 'still a little bit further away'; source lists return as 'Unknown', so 01/11 is a placeholder estimate, recheck fantasyfootballscout.co.uk weekly [user review, 2026-10-17]"
+      "note": "Benjamin Sesko (shin) -- now Man United's primary senior centre-forward per user review 2026-10-17 (upgraded from 'mostly a sub', x0.97 -> x0.92); confirmed out vs Leeds 18/10, manager says 'still a little bit further away'; source lists return as 'Unknown', so 01/11 is a placeholder estimate, recheck fantasyfootballscout.co.uk weekly [confirmed still 'Unknown' on source as of 2026-10-25]"
     }
   ]
 }
