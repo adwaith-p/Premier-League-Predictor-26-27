@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10 23:09",
+  "generatedAt": "2026-11-17 22:06",
   "season": "2026/27",
   "matchesPlayed": 100,
   "table": [
@@ -2236,6 +2236,146 @@
       "titleChance": 0.0,
       "top4Chance": 0.0023,
       "relegationChance": 0.1585
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Arsenal",
+      "titleChance": 0.7988,
+      "top4Chance": 0.9992,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Man City",
+      "titleChance": 0.1575,
+      "top4Chance": 0.9691,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Brighton",
+      "titleChance": 0.0388,
+      "top4Chance": 0.8692,
+      "relegationChance": 0.0
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Liverpool",
+      "titleChance": 0.0027,
+      "top4Chance": 0.4448,
+      "relegationChance": 0.0003
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Chelsea",
+      "titleChance": 0.0013,
+      "top4Chance": 0.2229,
+      "relegationChance": 0.0018
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Bournemouth",
+      "titleChance": 0.0004,
+      "top4Chance": 0.1798,
+      "relegationChance": 0.0025
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Brentford",
+      "titleChance": 0.0003,
+      "top4Chance": 0.1196,
+      "relegationChance": 0.0058
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Aston Villa",
+      "titleChance": 0.0001,
+      "top4Chance": 0.0415,
+      "relegationChance": 0.0242
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Everton",
+      "titleChance": 0.0001,
+      "top4Chance": 0.0595,
+      "relegationChance": 0.0133
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Fulham",
+      "titleChance": 0.0,
+      "top4Chance": 0.0036,
+      "relegationChance": 0.1393
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Crystal Palace",
+      "titleChance": 0.0,
+      "top4Chance": 0.0001,
+      "relegationChance": 0.573
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Coventry",
+      "titleChance": 0.0,
+      "top4Chance": 0.0,
+      "relegationChance": 0.8874
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Ipswich",
+      "titleChance": 0.0,
+      "top4Chance": 0.0007,
+      "relegationChance": 0.4112
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Hull",
+      "titleChance": 0.0,
+      "top4Chance": 0.0009,
+      "relegationChance": 0.2491
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Leeds",
+      "titleChance": 0.0,
+      "top4Chance": 0.042,
+      "relegationChance": 0.0197
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Man United",
+      "titleChance": 0.0,
+      "top4Chance": 0.0268,
+      "relegationChance": 0.0419
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Newcastle",
+      "titleChance": 0.0,
+      "top4Chance": 0.0102,
+      "relegationChance": 0.0882
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Nott'm Forest",
+      "titleChance": 0.0,
+      "top4Chance": 0.0066,
+      "relegationChance": 0.1099
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Sunderland",
+      "titleChance": 0.0,
+      "top4Chance": 0.0012,
+      "relegationChance": 0.2739
+    },
+    {
+      "runDate": "2026-11-17",
+      "team": "Tottenham",
+      "titleChance": 0.0,
+      "top4Chance": 0.0023,
+      "relegationChance": 0.1585
     }
   ],
   "teamNews": [
@@ -2245,7 +2385,7 @@
       "endDate": "2027-01-01",
       "attackMultiplier": 0.85,
       "defenseMultiplier": 1.0,
-      "note": "Hugo Ekitike (Achilles) -- first-choice striker, expected return 01/01/2027 per fantasyfootballscout.co.uk [verified vs source, 2026-11-10]"
+      "note": "Hugo Ekitike (Achilles) -- first-choice striker, expected return 01/01/2027 per fantasyfootballscout.co.uk [verified vs source, 2026-11-17]"
     },
     {
       "team": "Aston Villa",
@@ -2253,7 +2393,7 @@
       "endDate": "2027-04-01",
       "attackMultiplier": 0.95,
       "defenseMultiplier": 1.12,
-      "note": "Amadou Onana (ACL) -- first-choice defensive midfielder, expected return 01/04/2027 (out ~9 months) per fantasyfootballscout.co.uk [verified vs source, 2026-11-10]"
+      "note": "Amadou Onana (ACL) -- first-choice defensive midfielder, expected return 01/04/2027 (out ~9 months) per fantasyfootballscout.co.uk [verified vs source, 2026-11-17]"
     },
     {
       "team": "Brighton",
@@ -2261,7 +2401,7 @@
       "endDate": "2026-11-22",
       "attackMultiplier": 0.85,
       "defenseMultiplier": 1.0,
-      "note": "Kaoru Mitoma (hamstring) -- Brighton's key winger, expected back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2026-10-31) (date updated from 2026-10-31 to 2026-11-08) (date updated from 2026-11-08 to 2026-11-22) [verified vs source, 2026-11-10]"
+      "note": "Kaoru Mitoma (hamstring) -- Brighton's key winger, expected back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2026-10-31) (date updated from 2026-10-31 to 2026-11-08) (date updated from 2026-11-08 to 2026-11-22) [verified vs source, 2026-11-17]"
     },
     {
       "team": "Coventry",
@@ -2269,7 +2409,7 @@
       "endDate": "2026-11-21",
       "attackMultiplier": 0.9,
       "defenseMultiplier": 1.0,
-      "note": "Haji Wright (thigh) -- starting striker, expected back 21/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-11-10]"
+      "note": "Haji Wright (thigh) -- starting striker, expected back 21/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-11-17]"
     },
     {
       "team": "Nott'm Forest",
@@ -2277,7 +2417,7 @@
       "endDate": "2026-11-21",
       "attackMultiplier": 1.0,
       "defenseMultiplier": 1.05,
-      "note": "Nicolo Savona (knee) -- regular defender, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-23) (date updated from 2026-10-23 to 2026-11-21) [verified vs source, 2026-11-10]"
+      "note": "Nicolo Savona (knee) -- regular defender, expected back 11/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-11 to 2026-10-23) (date updated from 2026-10-23 to 2026-11-21) [verified vs source, 2026-11-17]"
     },
     {
       "team": "Tottenham",
@@ -2285,7 +2425,7 @@
       "endDate": "2026-11-21",
       "attackMultiplier": 0.9,
       "defenseMultiplier": 1.0,
-      "note": "Mykhailo Mudryk (ankle) -- starting winger, out 6-8 weeks, expected back 31/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-31 to 2026-11-21) [verified vs source, 2026-11-10]"
+      "note": "Mykhailo Mudryk (ankle) -- starting winger, out 6-8 weeks, expected back 31/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-31 to 2026-11-21) [verified vs source, 2026-11-17]"
     },
     {
       "team": "Tottenham",
@@ -2293,7 +2433,7 @@
       "endDate": "2027-01-16",
       "attackMultiplier": 0.85,
       "defenseMultiplier": 1.0,
-      "note": "Xavi Simons (ACL) -- key attacking midfielder, ruled out since April, expected back 01/01/2027 per fantasyfootballscout.co.uk (date updated from 2027-01-01 to 2027-01-16) [verified vs source, 2026-11-10]"
+      "note": "Xavi Simons (ACL) -- key attacking midfielder, ruled out since April, expected back 01/01/2027 per fantasyfootballscout.co.uk (date updated from 2027-01-01 to 2027-01-16) [verified vs source, 2026-11-17]"
     },
     {
       "team": "Man United",
@@ -2301,7 +2441,7 @@
       "endDate": "2026-12-15",
       "attackMultiplier": 0.98,
       "defenseMultiplier": 1.03,
-      "note": "Manuel Ugarte (knee ligament, surgery) -- DM, no return date given; downgraded from 'integral' after user review, 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [confirmed still 'Unknown' on source as of 2026-11-10]"
+      "note": "Manuel Ugarte (knee ligament, surgery) -- DM, no return date given; downgraded from 'integral' after user review, 3-month placeholder estimate, recheck fantasyfootballscout.co.uk on/after 15/12 and extend or clear as needed [confirmed still 'Unknown' on source as of 2026-11-17]"
     },
     {
       "team": "Bournemouth",
@@ -2309,7 +2449,7 @@
       "endDate": "2026-11-28",
       "attackMultiplier": 0.98,
       "defenseMultiplier": 1.04,
-      "note": "Julian Araujo (thigh) -- rotational/integral in between per user review, back 28/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-11-10]"
+      "note": "Julian Araujo (thigh) -- rotational/integral in between per user review, back 28/11/2026 per fantasyfootballscout.co.uk [verified vs source, 2026-11-17]"
     },
     {
       "team": "Chelsea",
@@ -2317,7 +2457,7 @@
       "endDate": "2027-01-01",
       "attackMultiplier": 0.97,
       "defenseMultiplier": 1.05,
-      "note": "Reece James (unspecified) -- impactful player and captain per user review, back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2027-01-01; now knee surgery, out around three months) [verified vs source, 2026-11-10]"
+      "note": "Reece James (unspecified) -- impactful player and captain per user review, back 10/10/2026 per fantasyfootballscout.co.uk (date updated from 2026-10-10 to 2027-01-01; now knee surgery, out around three months) [verified vs source, 2026-11-17]"
     },
     {
       "team": "Man United",
@@ -2325,7 +2465,7 @@
       "endDate": "2027-01-16",
       "attackMultiplier": 0.92,
       "defenseMultiplier": 1.0,
-      "note": "Benjamin Sesko (shin) -- now Man United's primary senior centre-forward per user review 2026-10-17 (upgraded from 'mostly a sub', x0.97 -> x0.92); confirmed out vs Leeds 18/10, manager says 'still a little bit further away'; source lists return as 'Unknown', so 01/11 is a placeholder estimate, recheck fantasyfootballscout.co.uk weekly (date updated from 2026-11-01 to 2027-01-16; source now gives a real date, replacing the 01/11 placeholder) [verified vs source, 2026-11-10]"
+      "note": "Benjamin Sesko (shin) -- now Man United's primary senior centre-forward per user review 2026-10-17 (upgraded from 'mostly a sub', x0.97 -> x0.92); confirmed out vs Leeds 18/10, manager says 'still a little bit further away'; source lists return as 'Unknown', so 01/11 is a placeholder estimate, recheck fantasyfootballscout.co.uk weekly (date updated from 2026-11-01 to 2027-01-16; source now gives a real date, replacing the 01/11 placeholder) [verified vs source, 2026-11-17]"
     }
   ]
 }
